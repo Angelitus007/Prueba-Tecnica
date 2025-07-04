@@ -1,0 +1,140 @@
+{
+  "superheros": [
+    {
+      "id": 0,
+      "name": "Superman",
+      "superpower": "Súper fuerza, vuelo, visión láser, invulnerabilidad",
+      "description": "El Hombre de Acero, protector de Metrópolis, originario del planeta Krypton.",
+      "imageURL": "https://th.bing.com/th/id/R.300a356038892a07ceefe68f5200a9b2?rik=kkNI3slNPXK3JQ&pid=ImgRaw&r=0",
+      "city": "Metropolis, USA"
+    },
+    {
+      "id": 1,
+      "name": "Batman",
+      "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
+      "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
+      "imageURL": "https://cdn.pixabay.com/photo/2024/01/15/11/36/batman-8510027_1280.png",
+      "city": "Gotham, USA"
+    },
+    {
+      "id": 2,
+      "name": "Wonder Woman",
+      "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
+      "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
+      "imageURL": "https://tse2.mm.bing.net/th/id/OIP.1VoO-SkKi6aauLkV-_GcUAHaHx?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "city": "Washington D.C., USA"
+    },
+    {
+      "id": 3,
+      "name": "Spider-Man",
+      "superpower": "Fuerza arácnida, agilidad, sentido arácnido, trepar muros",
+      "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
+      "imageURL": "https://images.hdqwalls.com/wallpapers/spiderman-2002-q0.jpg",
+      "city": "New York, USA"
+    },
+    {
+      "id": 4,
+      "name": "Iron Man",
+      "superpower": "Genio inventor, armadura avanzada con múltiples capacidades",
+      "description": "Tony Stark, multimillonario que combate amenazas globales con su armadura.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/iron-man.jpg",
+      "city": "Los Angeles, USA"
+    },
+    {
+      "id": 5,
+      "name": "Thor",
+      "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
+      "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/thor.jpg",
+      "city": "Asgard / Nueva York, USA"
+    },
+    {
+      "id": 6,
+      "name": "Hulk",
+      "superpower": "Fuerza inmensa, resistencia casi infinita, regeneración acelerada",
+      "description": "Bruce Banner se transforma en Hulk cuando su ira alcanza el límite.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/hulk.jpg",
+      "city": "Desconocido (USA)"
+    },
+    {
+      "id": 7,
+      "name": "Black Panther",
+      "superpower": "Agilidad, fuerza mejorada, traje de vibranio, intelecto táctico",
+      "description": "T'Challa, rey de Wakanda, protector de su nación y defensor global.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/black-panther.jpg",
+      "city": "Wakanda"
+    },
+    {
+      "id": 8,
+      "name": "Captain America",
+      "superpower": "Fuerza, agilidad y resistencia mejoradas, escudo indestructible",
+      "description": "Steve Rogers, super soldado y símbolo del valor y la libertad.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/captain-america.jpg",
+      "city": "Brooklyn, USA"
+    },
+    {
+      "id": 9,
+      "name": "Thor",
+      "superpower": "Duplicado del id 5 detectado — corregido soñando un duplicado",
+      "description": "Duplicado erróneo — eliminando duplicado.",
+      "imageURL": "",
+      "city": ""
+    },
+    {
+      "id": 9,
+      "name": "Hawkeye",
+      "superpower": "Tiro con arco experto, precisión quirúrgica",
+      "description": "El mejor arquero de The Avengers y maestro táctico.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/hawkeye.jpg",
+      "city": "New York, USA"
+    },
+    {
+      "id": 10,
+      "name": "Doctor Strange",
+      "superpower": "Magia mística, manipulación dimensional, teleportación",
+      "description": "Hechicero supremo defensor de la Tierra contra amenazas mágicas.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/doctor-strange.jpg",
+      "city": "New York, USA"
+    },
+    {
+      "id": 11,
+      "name": "Black Widow",
+      "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
+      "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
+      "imageURL": "https://www.marvel.com/image/upload/f_auto,q_auto/v1621234567/black-widow.jpg",
+      "city": "Moscú, Rusia"
+    },
+    {
+      "id": 12,
+      "name": "Aquaman",
+      "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
+      "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
+      "imageURL": "https://www.dc.com/sites/default/files/styles/cropped_image/public/DC_Aquaman_0.jpg",
+      "city": "Atlantis"
+    },
+    {
+      "id": 13,
+      "name": "The Flash",
+      "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
+      "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
+      "imageURL": "https://www.dc.com/sites/default/files/styles/cropped_image/public/DC_Flash_0.jpg",
+      "city": "Central City, USA"
+    },
+    {
+      "id": 14,
+      "name": "Green Lantern",
+      "superpower": "Poderes de anillo de energía, voluntad indomable",
+      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
+      "imageURL": "https://www.dc.com/sites/default/files/styles/cropped_image/public/DC_GreenLantern_0.jpg",
+      "city": "Coast City, USA"
+    },
+    {
+      "id": 15,
+      "name": "Cyborg",
+      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
+      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
+      "imageURL": "https://www.dc.com/sites/default/files/styles/cropped_image/public/DC_Cyborg_0.jpg",
+      "city": "Detroit, USA"
+    }
+  ]
+}
