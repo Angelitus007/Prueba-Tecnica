@@ -1,0 +1,50 @@
+.p-main {
+
+  &__header {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    background-color: rgb(250, 213, 91);
+  }
+
+  &__img-header {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    z-index: 1;
+  }
+
+  &__logo {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    top: 10%;
+    left: 30px;
+    z-index: 2;
+  }
+
+  &__footer {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+
+    &__header {
+      height: 150px;
+    }
+
+    &__img-header {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__logo {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: auto;
+      top: 20%;
+    }
+  }
+}

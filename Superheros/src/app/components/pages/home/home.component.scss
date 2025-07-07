@@ -1,0 +1,36 @@
+@import '../../../../styles.scss';
+
+.p-home {}
+
+.s-create-hero {}
+
+.s-list-heros {
+
+  @include flex-style(column, center, center);
+
+  &__description {
+    text-align: center;
+    width: 500px;
+  }
+
+  &__header {
+    color: $color-principal;
+    text-align: center;
+    width: 400px;
+  }
+
+  @media (max-width: 768px) {
+
+    &__description {
+      width: 70%;
+    }
+
+    &__header {
+      width: 70%;
+    }
+  }
+
+  &__list {}
+}
+
+.s-search-bar {}
