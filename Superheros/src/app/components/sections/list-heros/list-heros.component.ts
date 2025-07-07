@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { HeroCardComponent } from "../../components/hero-card/hero-card.component";
+import { HeroRequestsService } from '../../../services/hero-requests.service';
 
 @Component({
   selector: 'app-list-heros',
@@ -7,6 +8,24 @@ import { HeroCardComponent } from "../../components/hero-card/hero-card.componen
   templateUrl: './list-heros.component.html',
   styleUrl: './list-heros.component.scss'
 })
-export class ListHerosComponent {
+export class ListHerosComponent implements OnInit {
+
+  private readonly heroRequestsService = inject(HeroRequestsService);
+
+  public initHeroList(): void {
+    this.heroRequestsService.getAllHeroes();
+  }
+
+  ngOnInit(): void {
+    this.initHeroList();
+
+    effect(() => {
+      if (this.heroRequestsService.loading()) {
+        console.log('Cargando héroes...');
+      } else {
+        console.log('Héroes cargados:', this.heroRequestsService.heroes());
+      }
+    });
+  }
 
 }
