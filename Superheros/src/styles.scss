@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 // Para títulos y botones principales
-$color-principal: #7d05b9;
-$color-eliminar: #cccccc;
+$color-principal: #8A42FB;
+$color-eliminar: #F3F3F3;
 
 @mixin flex-style($direction, $justify, $align) {
   display: flex;
@@ -24,4 +25,4 @@ button {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Open Sans', sans-serif; }
