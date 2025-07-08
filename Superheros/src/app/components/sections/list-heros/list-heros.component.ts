@@ -1,4 +1,4 @@
-import { Component, effect, inject, Injector, OnInit, runInInjectionContext } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HeroCardComponent } from "../../components/hero-card/hero-card.component";
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
@@ -11,11 +11,7 @@ import { Hero } from '../../../models/hero';
 })
 export class ListHerosComponent implements OnInit {
 
-  private readonly heroRequestsService = inject(HeroRequestsService);
-  private readonly injector = inject(Injector);
-
-  private readonly heroes: Hero[] = [];
-  private readonly isLoading: boolean = false;
+  protected readonly heroRequestsService = inject(HeroRequestsService);
 
   public initHeroList(): void {
     this.heroRequestsService.getAllHeroes();
@@ -23,16 +19,5 @@ export class ListHerosComponent implements OnInit {
 
   ngOnInit(): void {
     this.initHeroList();
-
-    runInInjectionContext(this.injector, () => {
-      effect(() => {
-        if (this.heroRequestsService.loading()) {
-          console.log('Cargando héroes...');
-        } else {
-          console.log('Héroes cargados:', this.heroRequestsService.heroes());
-          // this.heroes.push(...this.heroRequestsService.heroes());
-        }
-      });
-    });
   }
 }

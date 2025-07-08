@@ -1,0 +1,30 @@
+@import '../../../../styles.scss';
+
+.s-list-heros {
+
+  @include flex-style(column, center, center);
+
+  &__description {
+    text-align: center;
+    width: 660px;
+  }
+
+  &__header {
+    color: $color-principal;
+    text-align: center;
+    width: 660px;
+  }
+
+  @media (max-width: 768px) {
+
+    &__description {
+      width: 312px;
+    }
+
+    &__header {
+      width: 312px;
+    }
+  }
+
+  &__list {}
+}

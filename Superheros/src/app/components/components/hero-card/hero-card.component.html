@@ -1,14 +1,22 @@
-<mat-card class="example-card" appearance="outlined">
-  <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+<mat-card class="hero-card" appearance="outlined">
+
+  <img mat-card-image class="hero-card__photo" [src]="hero()?.imageURL" alt="Photo of {{ hero()?.name }}" />
+
+  <mat-card-content class="hero-card__content">
+    <h2 class="hero-card__name"> {{hero()?.name}} </h2>
+    <p class="hero-card__superpower"> {{hero()?.superpower}} </p>
+    <p class="hero-card__description"> {{hero()?.description}} </p>
+    <p class="hero-card__city"> {{hero()?.city}} </p>
   </mat-card-content>
+
   <mat-card-actions>
-    <button>LIKE</button>
-    <button>SHARE</button>
+    <div class="hero-card__buttons">
+      <button class="hero-card__b-editar" (click)="updateHero()">
+        <img src="assets/pencil.svg" alt="Editar"/>
+        Editar
+      </button>
+      <button class="hero-card__b-eliminar" (click)="deleteHero()">Eliminar</button>
+    </div>
   </mat-card-actions>
+
 </mat-card>

@@ -20,9 +20,5 @@ $color-eliminar: #F3F3F3;
   border-radius: $b_rad;
 }
 
-button {
-  @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
-}
-
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Open Sans', sans-serif; }

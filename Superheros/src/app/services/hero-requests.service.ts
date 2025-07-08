@@ -7,7 +7,7 @@ import { Hero } from '../models/hero';
 })
 export class HeroRequestsService {
 
-  // Usando 'npx json-server --watch db.json'
+  // Usando 'npx json-server db.json'
   private readonly apiURL = 'http://localhost:3000/superheros';
   private readonly http = inject(HttpClient);
 
