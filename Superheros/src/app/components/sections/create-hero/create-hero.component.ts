@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../components/dialog/dialog.component';
+import { Dialogs } from '../../../shared/dialogTypes';
 
 @Component({
   selector: 'section-create-hero',
@@ -8,4 +11,19 @@ import { Component } from '@angular/core';
 })
 export class CreateHeroComponent {
 
+  private readonly dialog = inject(MatDialog);
+
+  openDialog(): void {
+    this.dialog.open(DialogComponent);
+  }
+
+  createHero(): void {
+    this.dialog.open(DialogComponent, {
+      data: {
+        dialogToShow: Dialogs.CreateHero,
+      }
+    });
+
+    console.log('Hero created.');
+  }
 }

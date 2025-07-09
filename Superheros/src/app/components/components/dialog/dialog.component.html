@@ -1,55 +1,53 @@
-<div class="c-dialog__header">
-  <h2 mat-dialog-title>Eliminar héroe</h2>
-  <mat-dialog-actions>
-    <button mat-button mat-dialog-close>
-      <img src="assets/close.svg" alt="Close Button">
-    </button>
-  </mat-dialog-actions>
-</div>
-
-<mat-dialog-content class="c-dialog__content">
-  <img src="assets/alert.svg" alt="Alert Button">
-  <p>¿Estás seguro de que deseas eliminar a este héroe?</p>
-  <p>Una vez eliminado no podrás revertir esta acción.</p>
-</mat-dialog-content>
-
-<mat-dialog-actions class="c-dialog__buttons">
-  <button mat-dialog-close>Cancelar</button>
-  <button (click)="deleteHero(heroData.hero)">Si, eliminar</button>
-</mat-dialog-actions>
-
-
-<!--
 @switch (dialogToShow) {
-  @case (dialogType.DeleteHero) {
-    <h2 mat-dialog-title>Eliminar héroe</h2>
 
-    <mat-dialog-content>This dialog is used to delete a hero.</mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
+  @case (Dialogs.DeleteHero) {
+    <div class="c-dialog__header">
+      <h2 mat-dialog-title>Eliminar héroe</h2>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>
+          <img src="assets/close.svg" alt="Close Button">
+        </button>
+      </mat-dialog-actions>
+    </div>
+
+    <mat-dialog-content class="c-dialog__content">
+      <img src="assets/alert.svg" alt="Alert Button">
+      <p>¿Estás seguro de que deseas eliminar a este héroe?</p>
+      <p>Una vez eliminado no podrás revertir esta acción.</p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="c-dialog__buttons">
+      <button mat-dialog-close>Cancelar</button>
+      <button (click)="deleteHero()" mat-dialog-close>Si, eliminar</button>
     </mat-dialog-actions>
   }
 
-  @case (dialogType.CreateHero) {
-    <h2 mat-dialog-title>Crear nuevo héroe</h2>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>
-        <img src="/Superheros/public/assets/close.svg" alt="Close Button">
-      </button>
-    </mat-dialog-actions>
+  @case (Dialogs.CreateHero) {
+    <div class="c-dialog__header">
+      <h2 mat-dialog-title>Crear nuevo héroe</h2>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>
+          <img src="assets/close.svg" alt="Close Button">
+        </button>
+      </mat-dialog-actions>
+    </div>
 
     <mat-dialog-content>This dialog is used to create a new hero.</mat-dialog-content>
-
+    <!-- Aqui va el c-form -->
 
   }
 
-  @case (dialogType.UpdateHero) {
-    <h2 mat-dialog-title>Editar héroe</h2>
+  @case (Dialogs.UpdateHero) {
+    <div class="c-dialog__header">
+      <h2 mat-dialog-title>Editar héroe</h2>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>
+          <img src="assets/close.svg" alt="Close Button">
+        </button>
+      </mat-dialog-actions>
+    </div>
 
-    <mat-dialog-content>This dialog is used to edit a hero.</mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
-    </mat-dialog-actions>
+    <mat-dialog-content>This dialog is used to create a new hero.</mat-dialog-content>
+    <!-- Aqui va el c-form -->
   }
 }
--->

@@ -2,11 +2,12 @@
 
 .s-list-heros {
 
-  @include flex-style(column, center, center);
+  width: 100%;
+  max-width: 1344px;
+  margin: 0 auto;
 
-  &__description {
-    text-align: center;
-    width: 660px;
+  &__info {
+    @include flex-style(column, center, center);
   }
 
   &__header {
@@ -14,6 +15,21 @@
     text-align: center;
     width: 660px;
   }
+
+  &__description {
+    text-align: center;
+    width: 660px;
+  }
+
+  &__hero-list {
+
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, 318px);
+    justify-content: center;
+    align-items: center;
+  }
+
 
   @media (max-width: 768px) {
 
@@ -26,5 +42,4 @@
     }
   }
 
-  &__list {}
 }

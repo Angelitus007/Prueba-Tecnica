@@ -11,13 +11,21 @@ import { Hero } from '../../../models/hero';
 })
 export class ListHerosComponent implements OnInit {
 
-  protected readonly heroRequestsService = inject(HeroRequestsService);
+  private readonly _heroRequestsService = inject(HeroRequestsService);
 
   public initHeroList(): void {
-    this.heroRequestsService.getAllHeroes();
+    this._heroRequestsService.getAllHeroes();
   }
 
   ngOnInit(): void {
     this.initHeroList();
+  }
+
+  public get heroList(): Hero[] {
+    return this._heroRequestsService.heroes();
+  }
+
+  public get isLoading(): boolean {
+    return this._heroRequestsService.loading();
   }
 }

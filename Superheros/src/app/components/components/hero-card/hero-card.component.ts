@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { Hero } from '../../../models/hero';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Dialog } from '@angular/cdk/dialog';
@@ -9,7 +8,7 @@ import { Dialogs } from '../../../shared/dialogTypes';
 
 @Component({
   selector: 'c-hero-card',
-  imports: [MatCardModule],
+  imports: [],
   templateUrl: './hero-card.component.html',
   styleUrl: './hero-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,23 +24,32 @@ export class HeroCardComponent {
   }
 
   deleteHero(): void {
-
     const hero = this.hero();
     if (hero) {
       this.dialog.open(DialogComponent, {
         data: {
-          hero: hero
+          hero: hero,
+          dialogToShow: Dialogs.DeleteHero,
         }
       });
 
-      // this.heroRequestsService.deleteHero(hero.id);
       console.log('Hero deleted:', hero.name);
     }
 
   }
 
   updateHero(): void {
-    console.log('Update hero:', this.hero());
+    const hero = this.hero();
+    if (hero) {
+      this.dialog.open(DialogComponent, {
+        data: {
+          hero: hero,
+          dialogToShow: Dialogs.UpdateHero,
+        }
+      });
+
+      console.log('Hero updated:', hero.name);
+    }
   }
 
 }

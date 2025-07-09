@@ -1,0 +1,20 @@
+@import '../../../../styles.scss';
+
+.p-home {
+  @include flex-style(column, center, stretch);
+  width: 100%;
+
+  &__search-creation {
+    @include flex-style(row, center, center);
+    gap: 1.875rem;
+    margin: 1.25rem 0;
+  }
+
+  @media (max-width: 768px) {
+    &__search-creation {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+  }
+}

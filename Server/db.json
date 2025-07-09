@@ -1,23 +1,7 @@
 {
   "superheros": [
     {
-      "id": 0,
-      "name": "Superman",
-      "superpower": "Súper fuerza, vuelo, visión láser, invulnerabilidad",
-      "description": "El Hombre de Acero, protector de Metrópolis, originario del planeta Krypton.",
-      "imageURL": "https://th.bing.com/th/id/R.300a356038892a07ceefe68f5200a9b2?rik=kkNI3slNPXK3JQ&pid=ImgRaw&r=0",
-      "city": "Metropolis, USA."
-    },
-    {
-      "id": 1,
-      "name": "Batman",
-      "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
-      "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
-      "imageURL": "https://cdn.pixabay.com/photo/2024/01/15/11/36/batman-8510027_1280.png",
-      "city": "Gotham, USA."
-    },
-    {
-      "id": 2,
+      "id": "2",
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
       "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
@@ -25,7 +9,7 @@
       "city": "Washington D.C., USA."
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Spider-Man",
       "superpower": "Fuerza arácnida, agilidad, sentido arácnido, trepar muros",
       "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
@@ -33,15 +17,7 @@
       "city": "New York, USA."
     },
     {
-      "id": 4,
-      "name": "Iron Man",
-      "superpower": "Genio inventor, armadura avanzada con múltiples capacidades",
-      "description": "Tony Stark, multimillonario que combate amenazas globales con su armadura.",
-      "imageURL": "https://image.tmdb.org/t/p/original/rYy4MShKrZVXhiG4BLqwW1PeSOT.jpg",
-      "city": "Los Angeles, USA."
-    },
-    {
-      "id": 5,
+      "id": "5",
       "name": "Thor",
       "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
       "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
@@ -49,7 +25,7 @@
       "city": "Nueva York, USA."
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Hulk",
       "superpower": "Fuerza inmensa, resistencia casi infinita, regeneración acelerada",
       "description": "Bruce Banner se transforma en Hulk cuando su ira alcanza el límite.",
@@ -57,7 +33,7 @@
       "city": "Nueva York, USA."
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Black Panther",
       "superpower": "Agilidad, fuerza mejorada, traje de vibranio, intelecto táctico",
       "description": "T'Challa, rey de Wakanda, protector de su nación y defensor global.",
@@ -65,7 +41,7 @@
       "city": "Palm Beach, USA."
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Captain America",
       "superpower": "Fuerza, agilidad y resistencia mejoradas, escudo indestructible",
       "description": "Steve Rogers, super soldado y símbolo del valor y la libertad.",
@@ -73,7 +49,7 @@
       "city": "Brooklyn, USA."
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Hawkeye",
       "superpower": "Tiro con arco experto, precisión quirúrgica",
       "description": "El mejor arquero de The Avengers y maestro táctico.",
@@ -81,7 +57,7 @@
       "city": "New York, USA."
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Doctor Strange",
       "superpower": "Magia mística, manipulación dimensional, teleportación",
       "description": "Hechicero supremo defensor de la Tierra contra amenazas mágicas.",
@@ -89,7 +65,7 @@
       "city": "New York, USA."
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Black Widow",
       "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
       "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
@@ -97,7 +73,7 @@
       "city": "Moscú, RU."
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Aquaman",
       "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
       "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
@@ -105,7 +81,7 @@
       "city": "Miami, USA."
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "The Flash",
       "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
       "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
@@ -113,7 +89,7 @@
       "city": "Central City, USA."
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Green Lantern",
       "superpower": "Poderes de anillo de energía, voluntad indomable",
       "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
@@ -121,7 +97,7 @@
       "city": "Coast City, USA."
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Cyborg",
       "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
       "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",

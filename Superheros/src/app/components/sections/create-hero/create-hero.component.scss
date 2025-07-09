@@ -1,0 +1,10 @@
+@import '../../../../styles.scss';
+
+.s-create-hero {
+
+  
+
+  &__button {
+    @include button_style(10px, 1px, $color-principal, white, 20px);
+  }
+}

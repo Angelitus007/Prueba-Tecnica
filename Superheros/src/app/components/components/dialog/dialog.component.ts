@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import {
   MatDialog,
   MatDialogActions,
@@ -17,21 +17,33 @@ import { Hero } from '../../../models/hero';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss'
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
 
-  private _dialogToShow!: string;
-  public dialogType = Dialogs;
-
-  set dialogToShow(str: string) { this._dialogToShow = str; }
-  get dialogToShow(): string { return this._dialogToShow; }
+  protected Dialogs = Dialogs;
+  protected dialogToShow!: Dialogs;
+  protected hero!: Hero;
 
   private readonly heroRequestsService = inject(HeroRequestsService);
 
   heroData = inject(MAT_DIALOG_DATA);
 
-  deleteHero(hero: Hero): void {
-    this.heroRequestsService.deleteHero(hero.id);
-    console.log('Hero deleted:', hero.name);
+  initDataFromDialog(): void {
+    if (this.heroData) {
+      this.dialogToShow = this.heroData.dialogToShow;
+      this.hero = this.heroData.hero;
+    }
+  }
+
+  ngOnInit(): void {
+    this.initDataFromDialog();
+  }
+
+  deleteHero(): void {
+    this.heroRequestsService.deleteHero(this.hero.id);
+    console.log('Hero deleted:', this.hero.name);
+
+    // Mostrar mensaje flotante de éxito de borrado con el snackbar
+    // Pendiente
   }
 }
 

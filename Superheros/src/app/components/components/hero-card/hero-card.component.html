@@ -1,15 +1,13 @@
-<mat-card class="hero-card" appearance="outlined">
+<div class="hero-card">
 
-  <img mat-card-image class="hero-card__photo" [src]="hero()?.imageURL" alt="Photo of {{ hero()?.name }}" />
+  <img class="hero-card__photo" [src]="hero()?.imageURL" alt="Photo of {{ hero()?.name }}" />
 
-  <mat-card-content class="hero-card__content">
+  <div class="hero-card__content">
     <h2 class="hero-card__name"> {{hero()?.name}} </h2>
     <p class="hero-card__superpower"> {{hero()?.superpower}} </p>
     <p class="hero-card__description"> {{hero()?.description}} </p>
     <p class="hero-card__city"> {{hero()?.city}} </p>
-  </mat-card-content>
 
-  <mat-card-actions>
     <div class="hero-card__buttons">
       <button class="hero-card__b-editar" (click)="updateHero()">
         <img src="assets/pencil.svg" alt="Editar"/>
@@ -17,6 +15,6 @@
       </button>
       <button class="hero-card__b-eliminar" (click)="deleteHero()">Eliminar</button>
     </div>
-  </mat-card-actions>
+  </div>
 
-</mat-card>
+</div>
