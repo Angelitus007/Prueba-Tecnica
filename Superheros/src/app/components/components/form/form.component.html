@@ -1,0 +1,25 @@
+<form class="c-form" [formGroup]="form" (submit)="onSubmit()">
+
+  @for (field of formFields; track field.controlName) {
+
+    @if (field.type !== 'checkbox') {
+      <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
+      <input class="c-form__input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
+      [placeholder]="field.placeholder" />
+    } @else {
+      <div class="c-form__checkbox">
+        <input class="c-form__checkbox-input" [id]="field.controlName" [type]="field.type"
+          [formControlName]="field.controlName" />
+        <label class="c-form__checkbox-label" [for]="field.controlName">
+          {{ field.label }}
+          <a href="/terms" target="_blank">Términos y condiciones</a>
+        </label>
+      </div>
+    }
+
+  }
+
+  <button class="c-form__button" type="submit" [disabled]="form.invalid">
+    {{ getButtonText() }}
+  </button>
+</form>

@@ -1,0 +1,25 @@
+@import '../../../../styles.scss';
+
+.c-form {
+
+    @include flex-style(column, center, flex-start);
+
+    &__button {
+
+      @include button_style(10px, 1px, $color-principal, white, 20px);
+
+      &:disabled {
+        @include button_style(10px, 1px, $color-deshabilitado, white, 20px);
+      }
+    }
+
+    &__checkbox {}
+
+    &__checkbox-input {}
+
+    &__checkbox-label {}
+
+    &__input {}
+
+    &__label {}
+}

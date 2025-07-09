@@ -32,9 +32,9 @@
       </mat-dialog-actions>
     </div>
 
-    <mat-dialog-content>This dialog is used to create a new hero.</mat-dialog-content>
-    <!-- Aqui va el c-form -->
-
+    <mat-dialog-content>
+      <c-form [formToShow]="formTypes.createHero"/>
+    </mat-dialog-content>
   }
 
   @case (Dialogs.UpdateHero) {
@@ -47,7 +47,8 @@
       </mat-dialog-actions>
     </div>
 
-    <mat-dialog-content>This dialog is used to create a new hero.</mat-dialog-content>
-    <!-- Aqui va el c-form -->
+    <mat-dialog-content>
+      <c-form [formToShow]="formTypes.updateHero"/>
+    </mat-dialog-content>
   }
 }
