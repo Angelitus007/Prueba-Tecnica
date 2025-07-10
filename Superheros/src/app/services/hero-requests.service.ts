@@ -14,14 +14,20 @@ export class HeroRequestsService {
   private _heroes = signal<Hero[]>([]);
   private _loading = signal<boolean>(false);
 
+  private originalHeroes: Hero[] = [];
 
   // Tendria que hacer lo mismo con los de update y delete con el loading?
   getAllHeroes(): void {
     this._loading.set(true);
-    this.http.get<Hero[]>(this.apiURL).subscribe(hero => {
-      this._heroes.set(hero);
+    this.http.get<Hero[]>(this.apiURL).subscribe(heroList => {
+      this.originalHeroes = heroList;
+      this._heroes.set(heroList);
       this._loading.set(false);
     });
+  }
+
+  restoreOriginalHeroes(): void {
+    this._heroes.set(this.originalHeroes);
   }
 
   getHeroByID() {
@@ -36,7 +42,7 @@ export class HeroRequestsService {
   }
 
   deleteHero(id: number) {
-    this.http.delete<void>(`${this.apiURL}/${id}`).subscribe(deletedHero => {
+    this.http.delete<void>(`${this.apiURL}/${id}`).subscribe(() => {
       const updatedHeroes = this._heroes().filter(h => h.id !== id)
       this._heroes.set(updatedHeroes);
     });
@@ -46,8 +52,16 @@ export class HeroRequestsService {
     return this._heroes;
   }
 
+  setHeroes(heroes: Hero[]): void {
+    this._heroes.set(heroes);
+  }
+
   get loading(): Signal<boolean> {
     return this._loading;
+  }
+
+  setLoading(loading: boolean): void {
+    this._loading.set(loading);
   }
 
 }

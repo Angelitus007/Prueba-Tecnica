@@ -95,14 +95,6 @@
       "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
       "imageURL": "https://pics.filmaffinity.com/green_lantern-362846957-large.jpg",
       "city": "Coast City, USA."
-    },
-    {
-      "id": "15",
-      "name": "Cyborg",
-      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
-      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
-      "imageURL": "https://th.bing.com/th/id/R.62255aac7971850a965ce450edf22100?rik=8lXyc63W%2bGmTGA&pid=ImgRaw&r=0",
-      "city": "Detroit, USA."
     }
   ]
 }

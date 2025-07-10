@@ -4,22 +4,26 @@
 
     @if (field.type !== 'checkbox') {
       <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
-      <input class="c-form__input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
-      [placeholder]="field.placeholder" />
+      <input class="c-form__input " [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
+      [placeholder]="field.placeholder" [class.c-form__input--search-hero]="formToShow() === formTypes.searchHero"
+      [class.c-form__input--default]="formToShow() !== formTypes.searchHero"/>
     } @else {
-      <div class="c-form__checkbox">
-        <input class="c-form__checkbox-input" [id]="field.controlName" [type]="field.type"
-          [formControlName]="field.controlName" />
-        <label class="c-form__checkbox-label" [for]="field.controlName">
-          {{ field.label }}
-          <a href="/terms" target="_blank">Términos y condiciones</a>
-        </label>
-      </div>
+        <div class="c-form__checkbox">
+          <input class="c-form__checkbox-input" [id]="field.controlName" [type]="field.type"
+            [formControlName]="field.controlName" />
+          <label class="c-form__checkbox-label" [for]="field.controlName">
+            {{ field.label }}
+            <a href="/terms" target="_blank">Términos y condiciones</a>
+          </label>
+        </div>
     }
 
   }
 
-  <button class="c-form__button" type="submit" [disabled]="form.invalid">
-    {{ getButtonText() }}
-  </button>
+  @if (formToShow() !== formTypes.searchHero) {
+    <button class="c-form__button" type="submit" [disabled]="form.invalid">
+      {{ getButtonText() }}
+    </button>
+  }
+
 </form>

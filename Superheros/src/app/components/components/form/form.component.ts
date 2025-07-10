@@ -1,10 +1,13 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { formTypes } from '../../../shared/formTypes';
+import { HeroRequestsService } from '../../../services/hero-requests.service';
+import { debounce, debounceTime } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'c-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
@@ -31,6 +34,8 @@ export class FormComponent implements OnInit {
   private fb = inject(FormBuilder);
   form!: FormGroup;
 
+  private readonly _heroRequestService = inject(HeroRequestsService);
+
   inicializarForm(controls: Array<{ controlName: string; validators?: any[] }>) {
     this.form = this.fb.group(
       controls.reduce((formControls: { [key: string]: any }, field: { controlName: string; validators?: any[] }) => {
@@ -41,28 +46,59 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectFormType();
+  }
 
+  selectFormType(): void {
     if (this.formToShow() === formTypes.searchHero) {
       this.formFields = this.searchFormFields;
       this.inicializarForm(this.formFields);
+      this.detectFilterChanges();
     } else {
       this.formFields = this.heroFormFields;
       this.inicializarForm(this.formFields);
     }
   }
 
+
   onSubmit(): void {
-    if (this.form.valid) {
-      console.log('Form submitted:', this.form.value);
-    } else {
-      console.log('Form is invalid');
+
+    console.log('Formulario enviado:', this.form.value);
+
+    if( this.formToShow() === formTypes.createHero) {
+
+    } else if (this.formToShow() === formTypes.updateHero) {
+
+
+    }
+  }
+
+  detectFilterChanges(): void {
+    this.form.get('filter')?.valueChanges
+    .pipe(debounceTime(500))
+    .subscribe((filterValue: string) => {
+      if (!filterValue?.trim()) {
+        this._heroRequestService.restoreOriginalHeroes();
+      }
+      else {
+        this.filterHeroes();
+      }
+    });
+  }
+
+  filterHeroes(): void {
+    const filterValue = this.form.get('filter')?.value;
+
+    if (filterValue) {
+      const filteredHeroes = this._heroRequestService.heroes().filter(hero =>
+        hero.name.toLowerCase().includes(filterValue.toLowerCase()));
+
+      this._heroRequestService.setHeroes(filteredHeroes);
     }
   }
 
   getButtonText(): string {
     switch (this.formToShow()) {
-      case formTypes.searchHero:
-        return 'Buscar';
       case formTypes.createHero:
         return 'Crear Héroe';
       case formTypes.updateHero:
