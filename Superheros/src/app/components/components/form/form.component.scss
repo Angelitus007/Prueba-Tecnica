@@ -2,68 +2,69 @@
 
 .c-form {
 
-    @include flex-style(column, center, flex-start);
+  @include flex-style(column, center, flex-start);
 
-    &__button {
+  &__button {
 
-      @include button_style(10px, 1px, $color-principal, white, 20px);
+    @include button_style(10px, 1px, $color-principal, white, 20px);
 
-      &:disabled {
-        @include button_style(10px, 1px, $color-deshabilitado, white, 20px);
+    &:disabled {
+      @include button_style(10px, 1px, $color-deshabilitado, white, 20px);
+    }
+  }
+
+  &__checkbox-label {
+    a {
+      color: inherit;
+    }
+  }
+
+  &__label {
+
+  }
+
+  &__input {
+
+    &--search-hero {
+      width: 880px;
+      height: 92px;
+
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+      border: none;
+      border-radius: 50px;
+
+      text-indent: 40px;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border: 1px solid rgba(247, 247, 247, 0.843);
+      }
+
+      @media (max-width: 1024px) {
+        width: 600px;
+        height: 82px;
+        text-indent: 30px;
+      }
+
+      @media (max-width: 768px) {
+        width: 312px;
+        height: 72px;
+        text-indent: 20px;
       }
     }
 
-    &__checkbox {
-
+    &--default {
+      border: 1px solid rgb(209, 77, 77);
+      background-color: white;
     }
+  }
 
-    &__checkbox-input {
+  &__checkbox {
 
-    }
+  }
 
-    &__checkbox-label {
+  &__checkbox-input {
 
-    }
-
-    &__input {
-
-      &--search-hero {
-        width: 880px;
-        height: 92px;
-
-        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
-        border: none;
-        border-radius: 50px;
-
-        text-indent: 40px;
-        font-size: 16px;
-
-        &:focus {
-          outline: none;
-          border: 1px solid rgba(247, 247, 247, 0.843);
-        }
-
-        @media (max-width: 1024px) {
-          width: 600px;
-          height: 82px;
-          text-indent: 30px;
-        }
-
-        @media (max-width: 768px) {
-          width: 312px;
-          height: 72px;
-          text-indent: 20px;
-        }
-      }
-
-      &--default {
-        border: 1px solid rgb(209, 77, 77);
-        background-color: white;
-      }
-
-    }
-
-
-
-    &__label {}
+  }
 }

@@ -74,27 +74,11 @@
     },
     {
       "id": "12",
-      "name": "Aquaman",
+      "name": "Aqua",
       "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
+      "city": "Miami, USA.",
       "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
-      "imageURL": "https://pics.filmaffinity.com/aquaman-236062440-large.jpg",
-      "city": "Miami, USA."
-    },
-    {
-      "id": "13",
-      "name": "The Flash",
-      "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
-      "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
-      "imageURL": "https://wallpapers.com/images/hd/the-flash-movie-grant-gustin-tv-poster-fnld6v8v21vq4f2n.jpg",
-      "city": "Central City, USA."
-    },
-    {
-      "id": "14",
-      "name": "Green Lantern",
-      "superpower": "Poderes de anillo de energía, voluntad indomable",
-      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
-      "imageURL": "https://pics.filmaffinity.com/green_lantern-362846957-large.jpg",
-      "city": "Coast City, USA."
+      "imageURL": "https://pics.filmaffinity.com/aquaman-236062440-large.jpg"
     }
   ]
 }

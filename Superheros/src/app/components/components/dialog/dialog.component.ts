@@ -31,7 +31,6 @@ export class DialogComponent implements OnInit {
 
   heroData = inject(MAT_DIALOG_DATA);
 
-
   initDataFromDialog(): void {
     if (this.heroData) {
       this.dialogToShow = this.heroData.dialogToShow;
@@ -44,13 +43,13 @@ export class DialogComponent implements OnInit {
   }
 
   deleteHero(): void {
-    this.heroRequestsService.deleteHero(this.hero.id);
-    console.log('Hero deleted:', this.hero.name);
+    if (this.hero.id !== undefined) {
+      this.heroRequestsService.deleteHero(this.hero.id);
+      console.log('Hero deleted:', this.hero.name);
 
-    // Mostrar mensaje flotante de éxito de borrado con el snackbar
-    // Pendiente
+      // Mostrar mensaje flotante de éxito de borrado con el snackbar
+      // Pendiente
+    }
   }
 }
-
-
 

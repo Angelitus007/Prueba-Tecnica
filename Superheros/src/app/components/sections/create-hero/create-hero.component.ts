@@ -24,6 +24,6 @@ export class CreateHeroComponent {
       }
     });
 
-    console.log('Hero created.');
+    
   }
 }

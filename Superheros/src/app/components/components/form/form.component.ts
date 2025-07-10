@@ -4,10 +4,12 @@ import { formTypes } from '../../../shared/formTypes';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { debounce, debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Hero } from '../../../models/hero';
+import { MatDialogClose } from '@angular/material/dialog';
 
 @Component({
   selector: 'c-form',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatDialogClose],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
@@ -15,6 +17,8 @@ export class FormComponent implements OnInit {
 
   protected formTypes = formTypes;
   formToShow = input<formTypes>();
+  heroDataFromDialog = input<Hero>();
+
 
   formFields: Array<{ controlName: string; type: string; label?: string; placeholder?: string; validators?: any[] }> = [];
 
@@ -39,7 +43,7 @@ export class FormComponent implements OnInit {
   inicializarForm(controls: Array<{ controlName: string; validators?: any[] }>) {
     this.form = this.fb.group(
       controls.reduce((formControls: { [key: string]: any }, field: { controlName: string; validators?: any[] }) => {
-        formControls[field.controlName] = ['', field.validators || []];
+        formControls[field.controlName] = [field.controlName === 'terms' ? false : '', field.validators || []];
         return formControls;
       }, {})
     );
@@ -57,20 +61,60 @@ export class FormComponent implements OnInit {
     } else {
       this.formFields = this.heroFormFields;
       this.inicializarForm(this.formFields);
+
+      if (this.formToShow() === formTypes.updateHero) {
+        this.rellenarForm();
+      }
     }
   }
 
+  rellenarForm(): void {
+    if (this.heroDataFromDialog()) {
+      this.form.patchValue({
+        name: this.heroDataFromDialog()?.name,
+        superpower: this.heroDataFromDialog()?.superpower,
+        city: this.heroDataFromDialog()?.city,
+        description: this.heroDataFromDialog()?.description,
+        photo: this.heroDataFromDialog()?.imageURL
+      });
+    }
+  }
 
   onSubmit(): void {
-
     console.log('Formulario enviado:', this.form.value);
 
     if( this.formToShow() === formTypes.createHero) {
-
+        const newHero = this.heroConstruction();
+        this._heroRequestService.createHero(newHero);
+        this.form.reset();
     } else if (this.formToShow() === formTypes.updateHero) {
-
-
+        const updatedHero = this.heroUpdate();
+        this._heroRequestService.updateHero(updatedHero);
+        this.form.reset();
     }
+  }
+
+  heroConstruction(): Hero {
+    const newHero: Hero = {
+      name: this.form.get('name')?.value,
+      superpower: this.form.get('superpower')?.value,
+      city: this.form.get('city')?.value,
+      description: this.form.get('description')?.value,
+      imageURL: this.form.get('photo')?.value
+    };
+    return newHero;
+  }
+
+  heroUpdate(): Hero {
+    const updatedHero: Hero = {
+      id: this.heroDataFromDialog()?.id,
+      name: this.form.get('name')?.value,
+      superpower: this.form.get('superpower')?.value,
+      city: this.form.get('city')?.value,
+      description: this.form.get('description')?.value,
+      imageURL: this.form.get('photo')?.value
+    };
+    return updatedHero;
   }
 
   detectFilterChanges(): void {
@@ -107,5 +151,4 @@ export class FormComponent implements OnInit {
         return '';
     }
   }
-
 }

@@ -32,10 +32,7 @@ export class HeroCardComponent {
           dialogToShow: Dialogs.DeleteHero,
         }
       });
-
-      console.log('Hero deleted:', hero.name);
     }
-
   }
 
   updateHero(): void {
@@ -47,8 +44,6 @@ export class HeroCardComponent {
           dialogToShow: Dialogs.UpdateHero,
         }
       });
-
-      console.log('Hero updated:', hero.name);
     }
   }
 

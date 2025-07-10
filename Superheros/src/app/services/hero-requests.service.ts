@@ -16,7 +16,7 @@ export class HeroRequestsService {
 
   private originalHeroes: Hero[] = [];
 
-  // Tendria que hacer lo mismo con los de update y delete con el loading?
+  // Tendria que hacer lo mismo con el 'loading' en los de update, create y delete? No,no?
   getAllHeroes(): void {
     this._loading.set(true);
     this.http.get<Hero[]>(this.apiURL).subscribe(heroList => {
@@ -30,8 +30,11 @@ export class HeroRequestsService {
     this._heroes.set(this.originalHeroes);
   }
 
-  getHeroByID() {
-
+  createHero(hero: Hero): void {
+    this.http.post<Hero>(this.apiURL, hero).subscribe(newHero => {
+      const updatedHeroList = [...this._heroes(), newHero];
+      this._heroes.set(updatedHeroList);
+    });
   }
 
   updateHero(hero: Hero): void {
@@ -42,6 +45,7 @@ export class HeroRequestsService {
   }
 
   deleteHero(id: number) {
+    console.log(`Deleting hero with ID: ${id}`);
     this.http.delete<void>(`${this.apiURL}/${id}`).subscribe(() => {
       const updatedHeroes = this._heroes().filter(h => h.id !== id)
       this._heroes.set(updatedHeroes);
