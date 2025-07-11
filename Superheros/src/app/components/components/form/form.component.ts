@@ -96,6 +96,7 @@ export class FormComponent implements OnInit {
 
   heroConstruction(): Hero {
     const newHero: Hero = {
+      id: this._heroRequestService.getNextHeroId(),
       name: this.form.get('name')?.value,
       superpower: this.form.get('superpower')?.value,
       city: this.form.get('city')?.value,
@@ -107,7 +108,8 @@ export class FormComponent implements OnInit {
 
   heroUpdate(): Hero {
     const updatedHero: Hero = {
-      id: this.heroDataFromDialog()?.id,
+      //id: this.heroDataFromDialog()?.id,
+      id: 500,
       name: this.form.get('name')?.value,
       superpower: this.form.get('superpower')?.value,
       city: this.form.get('city')?.value,

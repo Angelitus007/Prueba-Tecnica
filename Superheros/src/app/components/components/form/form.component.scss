@@ -4,8 +4,47 @@
 
   @include flex-style(column, center, flex-start);
 
-  &__button {
+  &__first-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
 
+    &--display {
+      @include flex-style(column, center, left);
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
+  }
+
+  &__other-rows {
+    @include flex-style(column, center, flex-start);
+    margin-top: 20px;
+    gap: 20px;
+    width: 100%;
+  }
+
+  &__item {
+
+    @include flex-style(column, center, left);
+    width: 100%;
+
+    &--checkbox {
+      margin-bottom: 20px !important;
+
+      @include flex-style(row, space-between, center);
+      gap: 20px;
+      width: 100%;
+    }
+  }
+
+  &__button {
     @include button_style(10px, 1px, $color-principal, white, 20px);
 
     &:disabled {
@@ -20,7 +59,7 @@
   }
 
   &__label {
-
+    font-size: 16px;
   }
 
   &__input {
@@ -55,9 +94,35 @@
     }
 
     &--default {
-      border: 1px solid rgb(209, 77, 77);
-      background-color: white;
+      background-color: $color-form;
+      border: none;
+      border-radius: 5px;
+
+      height: 36px;
+      padding: 10px;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+      }
     }
+  }
+
+  &__textarea {
+    background-color: $color-form;
+    border: none;
+    border-radius: 5px;
+
+    height: 60px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+
   }
 
   &__checkbox {

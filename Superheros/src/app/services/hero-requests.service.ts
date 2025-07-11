@@ -7,7 +7,7 @@ import { Hero } from '../models/hero';
 })
 export class HeroRequestsService {
 
-  // Usando 'npx json-server db.json'
+  // Usando 'npx json-server db.json --static ./assets'
   private readonly apiURL = 'http://localhost:3000/superheros';
   private readonly http = inject(HttpClient);
 
@@ -24,6 +24,15 @@ export class HeroRequestsService {
       this._heroes.set(heroList);
       this._loading.set(false);
     });
+  }
+
+  getNextHeroId(): number {
+    const heroes = this._heroes();
+    if (heroes.length === 0) {
+      return 0;
+    }
+    const maxId: number = Math.max(...heroes.map(hero => hero.id));
+    return maxId + 1;
   }
 
   restoreOriginalHeroes(): void {

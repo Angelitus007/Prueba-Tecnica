@@ -1,84 +1,140 @@
 {
   "superheros": [
     {
-      "id": "2",
+      "id": 0,
+      "name": "Superman",
+      "superpower": "Súper fuerza, vuelo, visión láser, invulnerabilidad",
+      "description": "El Hombre de Acero, protector de Metrópolis, originario del planeta Krypton.",
+      "imageURL": "http://localhost:3000/superman.jpg",
+      "city": "Metropolis, USA."
+    },
+    {
+      "id": 1,
+      "name": "Batman",
+      "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
+      "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
+      "imageURL": "http://localhost:3000/batman.png",
+      "city": "Gotham, USA."
+    },
+    {
+      "id": 2,
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
       "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
-      "imageURL": "https://tse2.mm.bing.net/th/id/OIP.1VoO-SkKi6aauLkV-_GcUAHaHx?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "imageURL": "http://localhost:3000/wonderwoman.png",
       "city": "Washington D.C., USA."
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Spider-Man",
       "superpower": "Fuerza arácnida, agilidad, sentido arácnido, trepar muros",
       "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
-      "imageURL": "https://images.hdqwalls.com/wallpapers/spiderman-2002-q0.jpg",
+      "imageURL": "http://localhost:3000/spiderman.jpg",
       "city": "New York, USA."
     },
     {
-      "id": "5",
+      "id": 4,
+      "name": "Iron Man",
+      "superpower": "Genio inventor, armadura avanzada con múltiples capacidades",
+      "description": "Tony Stark, multimillonario que combate amenazas globales con su armadura.",
+      "imageURL": "http://localhost:3000/ironman.png",
+      "city": "Los Angeles, USA."
+    },
+    {
+      "id": 5,
       "name": "Thor",
       "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
       "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
-      "imageURL": "https://fr.web.img3.acsta.net/pictures/22/06/17/16/43/4852446.jpg",
+      "imageURL": "http://localhost:3000/thor.png",
       "city": "Nueva York, USA."
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Hulk",
       "superpower": "Fuerza inmensa, resistencia casi infinita, regeneración acelerada",
       "description": "Bruce Banner se transforma en Hulk cuando su ira alcanza el límite.",
-      "imageURL": "https://th.bing.com/th/id/R.81ea915ec4ad12213132c7e2cb092095?rik=JiSgeHrRipIDPg&pid=ImgRaw&r=0",
+      "imageURL": "http://localhost:3000/hulk.jpg",
       "city": "Nueva York, USA."
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Black Panther",
       "superpower": "Agilidad, fuerza mejorada, traje de vibranio, intelecto táctico",
       "description": "T'Challa, rey de Wakanda, protector de su nación y defensor global.",
-      "imageURL": "https://th.bing.com/th/id/R.cbc69de97d8c8dfad132cdcf07d2974e?rik=a0etpNOQPEKnSw&pid=ImgRaw&r=0",
+      "imageURL": "http://localhost:3000/blackpanther.jpg",
       "city": "Palm Beach, USA."
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Captain America",
       "superpower": "Fuerza, agilidad y resistencia mejoradas, escudo indestructible",
       "description": "Steve Rogers, super soldado y símbolo del valor y la libertad.",
-      "imageURL": "https://cdn.britannica.com/30/182830-050-96F2ED76/Chris-Evans-title-character-Joe-Johnston-Captain.jpg",
+      "imageURL": "http://localhost:3000/captainamerica.png",
       "city": "Brooklyn, USA."
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Hawkeye",
       "superpower": "Tiro con arco experto, precisión quirúrgica",
       "description": "El mejor arquero de The Avengers y maestro táctico.",
-      "imageURL": "https://i.pinimg.com/originals/6a/69/a4/6a69a4b4c01b82ac00e0f5eb5305e3e5.jpg",
+      "imageURL": "http://localhost:3000/hawkeye.jpg",
       "city": "New York, USA."
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Doctor Strange",
       "superpower": "Magia mística, manipulación dimensional, teleportación",
       "description": "Hechicero supremo defensor de la Tierra contra amenazas mágicas.",
-      "imageURL": "https://www.themoviedb.org/t/p/original/shs4kJZKqDImuMI8kdfyl6v6PPR.jpg",
+      "imageURL": "http://localhost:3000/doctorstrange.png",
       "city": "New York, USA."
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Black Widow",
       "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
       "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
-      "imageURL": "https://wallpaperaccess.com/full/8018970.jpg",
+      "imageURL": "http://localhost:3000/blackwidow.jpg",
       "city": "Moscú, RU."
     },
     {
-      "id": "12",
-      "name": "Aqua",
+      "id": 12,
+      "name": "Aquaman",
       "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
-      "city": "Miami, USA.",
       "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
-      "imageURL": "https://pics.filmaffinity.com/aquaman-236062440-large.jpg"
+      "imageURL": "http://localhost:3000/aquaman.png",
+      "city": "Miami, USA."
+    },
+    {
+      "id": 13,
+      "name": "The Flash",
+      "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
+      "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
+      "imageURL": "http://localhost:3000/flash.jpg",
+      "city": "Central City, USA."
+    },
+    {
+      "id": 14,
+      "name": "Green Lantern",
+      "superpower": "Poderes de anillo de energía, voluntad indomable",
+      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
+      "imageURL": "http://localhost:3000/greenlantern.png",
+      "city": "Coast City, USA."
+    },
+    {
+      "id": 15,
+      "name": "Cyborg",
+      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
+      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
+      "imageURL": "http://localhost:3000/cyborg.jpg",
+      "city": "Detroit, USA."
+    },
+    {
+      "id": 16,
+      "name": "Messi",
+      "superpower": "Furbo",
+      "city": "Plata, ARG.",
+      "description": "Furbo top",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQjRp4fQWvYW9x4EfBcCXRGL4w1250kjJlZQ&s"
     }
   ]
 }

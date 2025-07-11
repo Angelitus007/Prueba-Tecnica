@@ -1,38 +1,58 @@
 <form class="c-form" [formGroup]="form" (submit)="onSubmit()">
 
-  @for (field of formFields; track field.controlName) {
-
-    @if (field.controlName === 'description') {
-      <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
-      <textarea class="c-form__textarea" [id]="field.controlName" [formControlName]="field.controlName"
-        [placeholder]="field.placeholder"></textarea>
-
-    } @else if (field.type !== 'checkbox') {
-      <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
-      <input class="c-form__input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
-        [placeholder]="field.placeholder" [class.c-form__input--search-hero]="formToShow() === formTypes.searchHero"
-        [class.c-form__input--default]="formToShow() !== formTypes.searchHero" />
-
-    } @else {
-      <div class="c-form__checkbox">
-        <input class="c-form__checkbox-input" [id]="field.controlName" type="checkbox" formControlName="terms" />
-        <label class="c-form__checkbox-label" [for]="field.controlName">
-          {{ field.label }}
-          <a href="/terms" target="_blank">Términos y condiciones</a>
-        </label>
-      </div>
-
-    <!-- Así no funciona no entiendo porqué, y lo comprobé un montón de veces
-          <input class="c-form__checkbox-input" [id]="field.controlName" [type]="field.type"
-            [formControlName]="field.controlName" />
-          -->
+  <div class="c-form__first-row">
+    @for (field of formFields; track field.controlName) {
+      @if (field.controlName === 'name' || field.controlName === 'superpower') {
+        <div class="c-form__first-row--display">
+          <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
+          <input class="c-form__input--default" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
+            [placeholder]="field.placeholder" />
+        </div>
+      }
     }
-  }
+  </div>
 
-  @if (formToShow() !== formTypes.searchHero) {
-    <button class="c-form__button" type="submit" mat-dialog-close [disabled]="form.invalid || form.pristine">
-      {{ getButtonText() }}
-    </button>
-  }
+  <div class="c-form__other-rows">
+    @for (field of formFields; track field.controlName) {
+
+      @if (field.controlName !== 'name' && field.controlName !== 'superpower') {
+
+        @if (field.controlName === 'description') {
+          <div class="c-form__item">
+            <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
+            <textarea class="c-form__textarea" [id]="field.controlName" [formControlName]="field.controlName"
+              [placeholder]="field.placeholder"></textarea>
+          </div>
+
+        } @else if (field.type !== 'checkbox') {
+          <div class="c-form__item">
+            <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
+            <input class="c-form__input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
+              [placeholder]="field.placeholder" [class.c-form__input--search-hero]="formToShow() === formTypes.searchHero"
+              [class.c-form__input--default]="formToShow() !== formTypes.searchHero" />
+          </div>
+
+        } @else {
+          <div class="c-form__item--checkbox">
+            <div class="c-form__checkbox">
+              <!-- Así no funciona no entiendo porqué, y lo comprobé un montón de veces
+              <input class="c-form__checkbox-input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"/> -->
+              <input class="c-form__checkbox-input" [id]="field.controlName" type="checkbox" formControlName="terms" />
+              <label class="c-form__checkbox-label" [for]="field.controlName">
+                {{ field.label }}
+                <a href="/terms" target="_blank">Términos y condiciones</a>
+              </label>
+            </div>
+
+            @if (formToShow() !== formTypes.searchHero) {
+                <button class="c-form__button" type="submit" mat-dialog-close [disabled]="form.invalid || form.pristine">
+                  {{ getButtonText() }}
+                </button>
+              }
+          </div>
+        }
+      }
+    }
+  </div>
 
 </form>

@@ -19,14 +19,12 @@ export class HeroCardComponent {
 
   private readonly dialog = inject(MatDialog);
 
-  openDialog(): void {
-    this.dialog.open(DialogComponent);
-  }
-
   deleteHero(): void {
     const hero = this.hero();
     if (hero) {
       this.dialog.open(DialogComponent, {
+        width: '703px',
+        height: '267px',
         data: {
           hero: hero,
           dialogToShow: Dialogs.DeleteHero,

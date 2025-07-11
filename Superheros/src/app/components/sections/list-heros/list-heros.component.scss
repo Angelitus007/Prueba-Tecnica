@@ -14,11 +14,13 @@
     color: $color-principal;
     text-align: center;
     width: 660px;
+    font-weight: 400;
   }
 
   &__description {
     text-align: center;
     width: 660px;
+    padding-bottom: 16px;
   }
 
   &__hero-list {

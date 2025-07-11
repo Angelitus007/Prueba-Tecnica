@@ -13,12 +13,19 @@ export class ListHerosComponent implements OnInit {
 
   private readonly _heroRequestsService = inject(HeroRequestsService);
 
+  private readonly heroesToDisplay: number = 8;
+  private index: number = 0;
+
   public initHeroList(): void {
     this._heroRequestsService.getAllHeroes();
   }
 
   ngOnInit(): void {
     this.initHeroList();
+  }
+
+  loadMoreHeroes(): void {
+
   }
 
   public get heroList(): Hero[] {

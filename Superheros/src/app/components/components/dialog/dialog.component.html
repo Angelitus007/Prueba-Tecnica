@@ -1,7 +1,8 @@
-@switch (dialogToShow) {
+<div class="c-dialog">
+  @switch (dialogToShow) {
 
-  @case (Dialogs.DeleteHero) {
-    <div class="c-dialog__header">
+    @case (Dialogs.DeleteHero) {
+    <div class="c-dialog__header c-dialog__header--delete">
       <h2 mat-dialog-title>Eliminar héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
@@ -12,18 +13,20 @@
 
     <mat-dialog-content class="c-dialog__content">
       <img src="assets/alert.svg" alt="Alert Button">
-      <p>¿Estás seguro de que deseas eliminar a este héroe?</p>
-      <p>Una vez eliminado no podrás revertir esta acción.</p>
+      <div class="c-dialog__text">
+        <h3>¿Estás seguro de que deseas eliminar a este héroe?</h3>
+        <p>Una vez eliminado no podrás revertir esta acción.</p>
+      </div>
     </mat-dialog-content>
 
     <mat-dialog-actions class="c-dialog__buttons">
-      <button mat-dialog-close>Cancelar</button>
-      <button (click)="deleteHero()" mat-dialog-close>Si, eliminar</button>
+      <button class="c-dialog__buttons--cancel" mat-dialog-close>Cancelar</button>
+      <button class="c-dialog__buttons--delete" (click)="deleteHero()" mat-dialog-close>Si, eliminar</button>
     </mat-dialog-actions>
-  }
+    }
 
-  @case (Dialogs.CreateHero) {
-    <div class="c-dialog__header">
+    @case (Dialogs.CreateHero) {
+    <div class="c-dialog__header c-dialog__header--create-update">
       <h2 mat-dialog-title>Crear nuevo héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
@@ -33,12 +36,12 @@
     </div>
 
     <mat-dialog-content>
-      <c-form [formToShow]="formTypes.createHero"/>
+      <c-form [formToShow]="formTypes.createHero" />
     </mat-dialog-content>
-  }
+    }
 
-  @case (Dialogs.UpdateHero) {
-    <div class="c-dialog__header">
+    @case (Dialogs.UpdateHero) {
+    <div class="c-dialog__header c-dialog__header--create-update">
       <h2 mat-dialog-title>Editar héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
@@ -48,7 +51,8 @@
     </div>
 
     <mat-dialog-content>
-      <c-form [formToShow]="formTypes.updateHero" [heroDataFromDialog]="hero"/>
+      <c-form [formToShow]="formTypes.updateHero" [heroDataFromDialog]="hero" />
     </mat-dialog-content>
+    }
   }
-}
+</div>

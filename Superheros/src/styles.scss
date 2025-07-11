@@ -5,6 +5,7 @@
 $color-principal: #8A42FB;
 $color-eliminar: #F3F3F3;
 $color-deshabilitado: #E7D8FE;
+$color-form: rgba(214, 230, 248, 0.573);
 
 @mixin flex-style($direction, $justify, $align) {
   display: flex;
@@ -21,5 +22,12 @@ $color-deshabilitado: #E7D8FE;
   border-radius: $b_rad;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Open Sans', sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}

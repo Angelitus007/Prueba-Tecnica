@@ -1,0 +1,66 @@
+@import '../../../../styles.scss';
+
+.c-dialog {
+
+  &__header {
+
+    @include flex-style(row, space-between, center);
+    text-align: center;
+
+    button {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+    }
+
+    &--delete {
+      padding-left: 160px;
+
+      @media (max-width: 600px) {
+        padding-left: 120px;
+      }
+    }
+
+    &--create-update {
+      padding-left: 130px;
+
+      @media (max-width: 600px) {
+        padding-left: 110px;
+      }
+    }
+  }
+
+  &__content {
+
+    @include flex-style(row, left, center);
+    gap: 8px;
+
+    h3 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin-top: 5px;
+    }
+  }
+
+  &__buttons {
+
+    gap: 10px;
+
+    &--cancel {
+      @include button_style(10px, 1px, $color-eliminar, black, 20px);
+        width: 135px;
+        height: 40px;
+    }
+
+    &--delete {
+      @include button_style(10px, 1px, $color-principal, white, 20px);
+      width: 135px;
+      height: 40px;
+    }
+
+  }
+}

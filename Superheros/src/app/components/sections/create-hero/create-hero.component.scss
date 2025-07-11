@@ -6,13 +6,13 @@
 
     width: 12.75rem;
     height: 3.5rem;
+    margin-top: 1.25rem;
 
     @include button_style(0.9375rem, 0.0625rem, $color-principal, white, 2.5rem);
     display: flex;
     align-items: center;
     gap: 0.3125rem;
     font-size: 1rem;
-
 
     img {
       width: 1.5rem;
