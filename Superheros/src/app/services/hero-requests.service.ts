@@ -26,13 +26,13 @@ export class HeroRequestsService {
     });
   }
 
-  getNextHeroId(): number {
+  getNextHeroId(): string {
     const heroes = this._heroes();
     if (heroes.length === 0) {
-      return 0;
+      return '0';
     }
-    const maxId: number = Math.max(...heroes.map(hero => hero.id));
-    return maxId + 1;
+    const maxId: number = Math.max(...heroes.map(hero => Number(hero.id)));
+    return (maxId + 1).toString();
   }
 
   restoreOriginalHeroes(): void {
@@ -40,6 +40,7 @@ export class HeroRequestsService {
   }
 
   createHero(hero: Hero): void {
+    //console.log("type of", typeof(hero.id));
     this.http.post<Hero>(this.apiURL, hero).subscribe(newHero => {
       const updatedHeroList = [...this._heroes(), newHero];
       this._heroes.set(updatedHeroList);
@@ -53,7 +54,7 @@ export class HeroRequestsService {
     });
   }
 
-  deleteHero(id: number) {
+  deleteHero(id: string) {
     console.log(`Deleting hero with ID: ${id}`);
     this.http.delete<void>(`${this.apiURL}/${id}`).subscribe(() => {
       const updatedHeroes = this._heroes().filter(h => h.id !== id)

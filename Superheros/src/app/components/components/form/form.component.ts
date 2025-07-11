@@ -108,8 +108,7 @@ export class FormComponent implements OnInit {
 
   heroUpdate(): Hero {
     const updatedHero: Hero = {
-      //id: this.heroDataFromDialog()?.id,
-      id: 500,
+      id: this.heroDataFromDialog()?.id ?? '',
       name: this.form.get('name')?.value,
       superpower: this.form.get('superpower')?.value,
       city: this.form.get('city')?.value,
