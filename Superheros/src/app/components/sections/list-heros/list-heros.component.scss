@@ -32,6 +32,10 @@
     align-items: center;
   }
 
+  &__view-more {
+    @include button_style(10px, 1px, $color-principal, white, 20px);
+  }
+
 
   @media (max-width: 768px) {
 
