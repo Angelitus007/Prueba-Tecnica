@@ -24,12 +24,24 @@
               [placeholder]="field.placeholder"></textarea>
           </div>
 
-        } @else if (field.type !== 'checkbox') {
+        } @else if (field.type === 'text') {
           <div class="c-form__item">
             <label class="c-form__label" [for]="field.controlName">{{ field.label }}</label>
             <input class="c-form__input" [id]="field.controlName" [type]="field.type" [formControlName]="field.controlName"
               [placeholder]="field.placeholder" [class.c-form__input--search-hero]="formToShow() === formTypes.searchHero"
               [class.c-form__input--default]="formToShow() !== formTypes.searchHero" />
+          </div>
+
+        } @else if (field.type === 'file') {
+          <div class="c-form__item" *ngIf="field.controlName === 'photo'">
+            <label class="c-form__label" for="photo">{{ field.label }}</label>
+            <input
+              class="c-form__input c-form__input--file"
+              id="photo"
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
           </div>
 
         } @else {

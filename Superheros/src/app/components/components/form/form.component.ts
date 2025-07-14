@@ -31,9 +31,11 @@ export class FormComponent implements OnInit {
     { controlName: 'superpower', type: 'text', label: 'Superpoder', placeholder: 'Superpoder', validators: [Validators.required] },
     { controlName: 'city', type: 'text', label: 'Ciudad', placeholder: 'Ciudad', validators: [Validators.required] },
     { controlName: 'description', type: 'text', label: 'Descripción', placeholder: 'Ingresa una descripción', validators: [Validators.required] },
-    { controlName: 'photo', type: 'text', label: 'Foto', placeholder: 'URL de la foto' , validators: [Validators.required] },
+    { controlName: 'photo', type: 'file', label: 'Elegir una imagen', validators: [Validators.required] },
     { controlName: 'terms', type: 'checkbox', label: 'Acepto los ', validators: [Validators.requiredTrue] }
   ];
+
+  selectedFile: File | null = null;
 
   private fb = inject(FormBuilder);
   form!: FormGroup;
@@ -75,7 +77,7 @@ export class FormComponent implements OnInit {
         superpower: this.heroDataFromDialog()?.superpower,
         city: this.heroDataFromDialog()?.city,
         description: this.heroDataFromDialog()?.description,
-        photo: this.heroDataFromDialog()?.imageURL
+        photo: this.heroDataFromDialog()?.imageURL,
       });
     }
   }
@@ -150,6 +152,15 @@ export class FormComponent implements OnInit {
         return 'Guardar cambios';
       default:
         return '';
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      const uploadedImageUrl = `http://localhost:3000/${this.selectedFile?.name}`;
+      this.form.patchValue({ photo: uploadedImageUrl });
     }
   }
 }
