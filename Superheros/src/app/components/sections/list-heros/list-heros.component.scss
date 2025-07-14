@@ -3,7 +3,7 @@
 .s-list-heros {
 
   width: 100%;
-  max-width: 1344px;
+  max-width: 84rem;
   margin: 0 auto;
 
   &__info {
@@ -13,38 +13,47 @@
   &__header {
     color: $color-principal;
     text-align: center;
-    width: 660px;
+    width: 41.25rem;
     font-weight: 400;
   }
 
   &__description {
     text-align: center;
-    width: 660px;
-    padding-bottom: 16px;
+    width: 41.25rem;
+    padding-bottom: 1rem;
   }
 
   &__hero-list {
 
     display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(auto-fill, 318px);
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, 19.875rem);
     justify-content: center;
     align-items: center;
   }
 
   &__view-more {
-    @include button_style(10px, 1px, $color-principal, white, 20px);
+    grid-column: 1 / -1; // Ocupa toda la fila
+    justify-self: center;
+    margin-top: 3.75rem;
+    margin-bottom: 1.875rem;
+    width: 8.4375rem;
+    @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
   }
 
+  &__empty {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
 
     &__description {
-      width: 312px;
+      width: 19.5rem;
     }
 
     &__header {
-      width: 312px;
+      width: 19.5rem;
     }
   }
 

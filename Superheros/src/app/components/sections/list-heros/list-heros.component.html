@@ -12,19 +12,19 @@
     @if (isLoading) {
       <p class="s-list-heros__loading">Cargando héroes...</p>
     } @else {
-      @for (h of visibleHeroes(); track h) {
+      @for (h of visibleHeroes; track h) {
         <c-hero-card [hero]="h" />
       } @empty {
         <p class="s-list-heros__empty">No hay héroes disponibles en este momento.</p>
       }
     }
 
-    <button class="s-list-heros__view-more" #interactionElement (click)="loadMoreHeroes()">Ver más</button>
-    @defer (on interaction(interactionElement)) {
-      
+    @if (visibleHeroes.length > 0) {
+      <button class="s-list-heros__view-more" #interactionElement (click)="viewMore ? loadMoreHeroes(4) : showLessHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
+
+      @defer (on interaction(interactionElement)) {
+        <!--<p>Mostrar más héroes?</p> -->
+      }
     }
-
   </div>
-
-  <!-- Pendiente la paginación o botón de ver más. -->
 </section>

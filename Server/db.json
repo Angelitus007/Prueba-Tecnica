@@ -10,11 +10,11 @@
     },
     {
       "id": "1",
-      "name": "Batma",
+      "name": "Batman",
       "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
-      "city": "Gotham, USA.",
       "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
-      "imageURL": "http://localhost:3000/batman.png"
+      "imageURL": "http://localhost:3000/batman.png",
+      "city": "Gotham, USA."
     },
     {
       "id": "2",

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { HeroCardComponent } from "../../components/hero-card/hero-card.component";
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
@@ -13,11 +13,16 @@ export class ListHerosComponent implements OnInit {
 
   private readonly _heroRequestsService = inject(HeroRequestsService);
 
-  private readonly heroesToDisplay: number = 8;
-  private index: number = 0;
+  private _visibleHeroes = signal<Hero[]>([]);
+  private _viewMore = signal<boolean>(true);
+  private index: number = 8;
 
-  protected visibleHeroes = signal<Hero[]>([]);
-  protected viewMore = signal<boolean>(false);
+  private readonly syncEffect = effect(() => {
+    if (!this._heroRequestsService.loading()) {
+      const allHeroes = this._heroRequestsService.heroes();
+      this._visibleHeroes.set(allHeroes.slice(0, this.index));
+    }
+  });
 
   public initHeroList(): void {
     this._heroRequestsService.getAllHeroes();
@@ -25,19 +30,38 @@ export class ListHerosComponent implements OnInit {
 
   ngOnInit(): void {
     this.initHeroList();
-    this.loadMoreHeroes();
+
+    // Sincroniza el Signal local con el Signal del servicio
+    // effect(() => {
+    //   if (!this._heroRequestsService.loading()) {
+    //     const allHeroes = this._heroRequestsService.heroes();
+    //     this._visibleHeroes.set(allHeroes.slice(0, this.index));
+    //   }
+    // });
   }
 
-  loadMoreHeroes(): void {
-    const allHeroes = this.heroList;
-    const nextIndex = this.index + this.heroesToDisplay;
+  loadMoreHeroes(heroesToDisplay: number): void {
+    const nextIndex = this.index + heroesToDisplay;
 
-    this.visibleHeroes.set([
-      ...this.visibleHeroes(),
-      ...allHeroes.slice(this.index, nextIndex)
+    this._visibleHeroes.set([
+      ...this._visibleHeroes(),
+      ...this._heroRequestsService.heroes().slice(this.index, nextIndex)
     ]);
 
     this.index = nextIndex;
+
+    if (this.index >= this._heroRequestsService.heroes().length) {
+      this._viewMore.set(false);
+    }
+  }
+
+  showLessHeroes(heroesToDisplay: number): void {
+    this._visibleHeroes.set(this._visibleHeroes().slice(0, this.index - heroesToDisplay));
+    this.index -= heroesToDisplay;
+
+    if (this.index <= (heroesToDisplay * 2)) {
+      this._viewMore.set(true);
+    }
   }
 
   public get heroList(): Hero[] {
@@ -46,5 +70,13 @@ export class ListHerosComponent implements OnInit {
 
   public get isLoading(): boolean {
     return this._heroRequestsService.loading();
+  }
+
+  public get viewMore(): boolean {
+    return this._viewMore();
+  }
+
+  public get visibleHeroes(): Hero[] {
+    return this._visibleHeroes();
   }
 }

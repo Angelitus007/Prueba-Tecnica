@@ -12,6 +12,12 @@ import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
 import { FormComponent } from "../form/form.component";
 import { formTypes } from '../../../shared/formTypes';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { AlertMsgService } from '../../../services/alert-msg.service';
 
 @Component({
   selector: 'c-dialog',
@@ -27,9 +33,11 @@ export class DialogComponent implements OnInit {
   protected formTypes = formTypes;
   protected hero!: Hero;
 
-  private readonly heroRequestsService = inject(HeroRequestsService);
-
+  private readonly _heroRequestsService = inject(HeroRequestsService);
   heroData = inject(MAT_DIALOG_DATA);
+
+  private readonly _alertMsgService = inject(AlertMsgService);
+
 
   initDataFromDialog(): void {
     if (this.heroData) {
@@ -44,11 +52,9 @@ export class DialogComponent implements OnInit {
 
   deleteHero(): void {
     if (this.hero.id !== undefined) {
-      this.heroRequestsService.deleteHero(this.hero.id);
-      console.log('Hero deleted:', this.hero.name);
+      this._heroRequestsService.deleteHero(this.hero.id);
 
-      // Mostrar mensaje flotante de éxito de borrado con el snackbar
-      // Pendiente
+      this._alertMsgService.showAlert('success', 'Este héroe se ha eliminado');
     }
   }
 }

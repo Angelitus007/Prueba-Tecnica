@@ -1,0 +1,36 @@
+@import '../../../../styles.scss';
+
+.c-alert {
+  position: fixed;
+
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: black;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+
+  z-index: 1000;
+
+  .success {
+    background-color: $color-success;
+  }
+
+  .error {
+    background-color: $color-error;
+  }
+
+
+  &__message {
+    @include flex-style(column, center, center);
+    gap: 8px;
+  }
+
+  &__img {
+    width: 24px;
+    height: 24px;
+  }
+}
