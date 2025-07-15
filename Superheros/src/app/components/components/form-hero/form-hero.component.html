@@ -1,0 +1,10 @@
+<form class="c-form" [formGroup]="form" (submit)="onSubmit()">
+
+  <div class="c-form__first-row"></div>
+
+
+      <button class="c-form__button" type="submit" mat-dialog-close [disabled]="form.invalid || form.pristine">
+
+      </button>
+
+</form>

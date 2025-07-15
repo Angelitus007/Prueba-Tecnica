@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { FormComponent } from "../../components/form/form.component";
 import { formTypes } from '../../../shared/formTypes';
+import { FormSearchComponent } from "../../components/form-search/form-search.component";
 
 @Component({
   selector: 'section-search-bar',
-  imports: [FormComponent],
+  imports: [FormSearchComponent],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
-  protected formTypesEnum = formTypes;
 }

@@ -38,6 +38,10 @@ export class HeroRequestsService {
     this._heroes.set(this._originalHeroes);
   }
 
+  public get originalHeroes(): Hero[] {
+    return this._originalHeroes;
+  }
+
   public createHero(hero: Hero): void {
     this.http.post<Hero>(this.apiURL, hero).subscribe(newHero => {
       const updatedHeroList = [...this._heroes(), newHero];
