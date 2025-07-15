@@ -13,7 +13,7 @@ import { Dialogs } from '../../../shared/dialogTypes';
 })
 export class HeroCardComponent {
 
-  readonly hero = input<Hero>();
+  public readonly hero = input<Hero>();
 
   private readonly dialog = inject(MatDialog);
 

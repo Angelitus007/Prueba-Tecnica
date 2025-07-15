@@ -2,7 +2,7 @@ import { Component, inject, input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { formTypes } from '../../../shared/formTypes';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
-import { debounce, debounceTime } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Hero } from '../../../models/hero';
 import { MatDialogClose } from '@angular/material/dialog';
@@ -16,17 +16,23 @@ import { AlertMsgService } from '../../../services/alert-msg.service';
 })
 export class FormComponent implements OnInit {
 
-  protected formTypes = formTypes;
-  readonly formToShow = input<formTypes>();
-  readonly heroDataFromDialog = input<Hero>();
+  protected formTypesEnum = formTypes;
+  public readonly formToShow = input<formTypes>();
+  public readonly heroDataFromDialog = input<Hero>();
 
-  formFields: Array<{ controlName: string; type: string; label?: string; placeholder?: string; validators?: any[] }> = [];
+  private readonly _heroRequestService = inject(HeroRequestsService);
+  private readonly _alertMsgService = inject(AlertMsgService);
+  private readonly _fb = inject(FormBuilder);
 
-  searchFormFields = [
+  protected form!: FormGroup;
+  protected formFields: Array<{ controlName: string; type: string; label?: string; placeholder?: string; validators?: any[] }> = [];
+  private _selectedFile: File | null = null;
+
+  private _searchFormFields = [
     { controlName: 'filter', type: 'text', placeholder: 'Busca un héroe' }
   ];
 
-  heroFormFields = [
+  private _heroFormFields = [
     { controlName: 'name', type: 'text', label: 'Nombre', placeholder: 'Nombre', validators: [Validators.required] },
     { controlName: 'superpower', type: 'text', label: 'Superpoder', placeholder: 'Superpoder', validators: [Validators.required] },
     { controlName: 'city', type: 'text', label: 'Ciudad', placeholder: 'Ciudad', validators: [Validators.required] },
@@ -35,16 +41,8 @@ export class FormComponent implements OnInit {
     { controlName: 'terms', type: 'checkbox', label: 'Acepto los ', validators: [Validators.requiredTrue] }
   ];
 
-  selectedFile: File | null = null;
-
-  private fb = inject(FormBuilder);
-  form!: FormGroup;
-
-  private readonly _heroRequestService = inject(HeroRequestsService);
-  private readonly _alertMsgService = inject(AlertMsgService);
-
-  inicializarForm(controls: Array<{ controlName: string; validators?: any[] }>) {
-    this.form = this.fb.group(
+  private inicializarForm(controls: Array<{ controlName: string; validators?: any[] }>) {
+    this.form = this._fb.group(
       controls.reduce((formControls: { [key: string]: any }, field: { controlName: string; validators?: any[] }) => {
         formControls[field.controlName] = [field.controlName === 'terms' ? false : '', field.validators || []];
         return formControls;
@@ -52,39 +50,47 @@ export class FormComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.selectFormType();
   }
 
-  selectFormType(): void {
+  private selectFormType(): void {
     if (this.formToShow() === formTypes.searchHero) {
-      this.formFields = this.searchFormFields;
-      this.inicializarForm(this.formFields);
-      this.detectFilterChanges();
+      this.setupSearchForm();
     } else {
-      this.formFields = this.heroFormFields;
-      this.inicializarForm(this.formFields);
-
-      if (this.formToShow() === formTypes.updateHero) {
-        this.rellenarForm();
-      }
+      this.setupHeroForm();
     }
   }
 
-  rellenarForm(): void {
-    if (this.heroDataFromDialog()) {
+  private setupSearchForm(): void {
+    this.formFields = this._searchFormFields;
+    this.inicializarForm(this.formFields);
+    this.detectFilterChanges();
+  }
+
+  private setupHeroForm(): void {
+    this.formFields = this._heroFormFields;
+    this.inicializarForm(this.formFields);
+
+    if (this.formToShow() === formTypes.updateHero) {
+      this.rellenarForm();
+    }
+  }
+
+  private rellenarForm(): void {
+    const heroData = this.heroDataFromDialog();
+    if (heroData) {
       this.form.patchValue({
-        name: this.heroDataFromDialog()?.name,
-        superpower: this.heroDataFromDialog()?.superpower,
-        city: this.heroDataFromDialog()?.city,
-        description: this.heroDataFromDialog()?.description,
-        photo: this.heroDataFromDialog()?.imageURL,
+        name: heroData.name,
+        superpower: heroData.superpower,
+        city: heroData.city,
+        description: heroData.description,
+        photo: heroData.imageURL,
       });
     }
   }
 
-  onSubmit(): void {
-    console.log('Formulario enviado:', this.form.value);
+  protected onSubmit(): void {
 
     if( this.formToShow() === formTypes.createHero) {
         const newHero = this.heroConstruction();
@@ -99,31 +105,25 @@ export class FormComponent implements OnInit {
     }
   }
 
-  heroConstruction(): Hero {
-    const newHero: Hero = {
+  private heroConstruction(): Hero {
+    const formValues = this.form.value;
+    return {
       id: this._heroRequestService.getNextHeroId(),
-      name: this.form.get('name')?.value,
-      superpower: this.form.get('superpower')?.value,
-      city: this.form.get('city')?.value,
-      description: this.form.get('description')?.value,
-      imageURL: this.form.get('photo')?.value
-    };
-    return newHero;
+      imageURL: formValues.photo,
+      ...formValues,
+    } as Hero;
   }
 
-  heroUpdate(): Hero {
-    const updatedHero: Hero = {
+  private heroUpdate(): Hero {
+    const formValues = this.form.value;
+    return {
       id: this.heroDataFromDialog()?.id ?? '',
-      name: this.form.get('name')?.value,
-      superpower: this.form.get('superpower')?.value,
-      city: this.form.get('city')?.value,
-      description: this.form.get('description')?.value,
-      imageURL: this.form.get('photo')?.value
-    };
-    return updatedHero;
+      imageURL: formValues.photo,
+      ...formValues,
+    } as Hero;
   }
 
-  detectFilterChanges(): void {
+  private detectFilterChanges(): void {
     this.form.get('filter')?.valueChanges
     .pipe(debounceTime(500))
     .subscribe((filterValue: string) => {
@@ -136,7 +136,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  filterHeroes(): void {
+  private filterHeroes(): void {
     const filterValue = this.form.get('filter')?.value;
 
     if (filterValue) {
@@ -147,7 +147,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  getButtonText(): string {
+  protected getButtonText(): string {
     switch (this.formToShow()) {
       case formTypes.createHero:
         return 'Crear Héroe';
@@ -158,11 +158,11 @@ export class FormComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event): void {
+  protected onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];
-      const uploadedImageUrl = `http://localhost:3000/${this.selectedFile?.name}`;
+      this._selectedFile = input.files[0];
+      const uploadedImageUrl = `http://localhost:3000/${this._selectedFile?.name}`;
       this.form.patchValue({ photo: uploadedImageUrl });
     }
   }

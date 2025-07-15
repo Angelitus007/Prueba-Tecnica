@@ -47,7 +47,7 @@ export class ListHerosComponent implements OnInit {
     const nextIndex = Math.max(this._index() - heroesToDisplay, 0);
     this._index.set(nextIndex);
 
-    if (nextIndex <= heroesToDisplay * 2) {
+    if (this._index() <= heroesToDisplay * 2) {
       this._viewMore.set(true);
     }
   }

@@ -17,6 +17,32 @@
       "city": "Gotham, USA."
     },
     {
+      "id": "2",
+      "imageURL": "http://localhost:3000/wonderwoman.png",
+      "name": "Wonder Woman",
+      "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
+      "city": "Washington D.C., USA.",
+      "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
+      "photo": "http://localhost:3000/wonderwoman.png",
+      "terms": true
+    },
+    {
+      "id": "3",
+      "name": "Spider-Man",
+      "superpower": "Fuerza arácnida, agilidad, sentido arácnido, trepar muros",
+      "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
+      "imageURL": "http://localhost:3000/spiderman.jpg",
+      "city": "New York, USA."
+    },
+    {
+      "id": "4",
+      "name": "Iron Man",
+      "superpower": "Genio inventor, armadura avanzada con múltiples capacidades",
+      "description": "Tony Stark, multimillonario que combate amenazas globales con su armadura.",
+      "imageURL": "http://localhost:3000/ironman.png",
+      "city": "Los Angeles, USA."
+    },
+    {
       "id": "5",
       "name": "Thor",
       "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
@@ -66,35 +92,11 @@
     },
     {
       "id": "11",
-      "name": "Black Wido",
+      "name": "Black Widow",
       "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
-      "city": "Moscú, RU.",
       "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
-      "imageURL": "http://localhost:3000/blackwidow.jpg"
-    },
-    {
-      "id": "12",
-      "name": "Aquaman",
-      "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
-      "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
-      "imageURL": "http://localhost:3000/aquaman.png",
-      "city": "Miami, USA."
-    },
-    {
-      "id": "13",
-      "name": "The Flash",
-      "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
-      "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
-      "imageURL": "http://localhost:3000/flash.jpg",
-      "city": "Central City, USA."
-    },
-    {
-      "id": "14",
-      "name": "Green Lantern",
-      "superpower": "Poderes de anillo de energía, voluntad indomable",
-      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
-      "imageURL": "http://localhost:3000/greenlantern.png",
-      "city": "Coast City, USA."
+      "imageURL": "http://localhost:3000/blackwidow.jpg",
+      "city": "Moscú, RU."
     }
   ]
 }
