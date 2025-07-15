@@ -33,7 +33,7 @@
           </div>
 
         } @else if (field.type === 'file') {
-          <div class="c-form__item" *ngIf="field.controlName === 'photo'">
+          <div class="c-form__item">
             <label class="c-form__label" for="photo">{{ field.label }}</label>
             <input
               class="c-form__input c-form__input--file"
@@ -42,6 +42,9 @@
               (change)="onFileSelected($event)"
               accept="image/*"
             />
+            <label for="photo" id="file-upload-button">
+              Seleccionar archivo
+            </label>
           </div>
 
         } @else {

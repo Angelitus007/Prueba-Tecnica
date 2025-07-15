@@ -141,7 +141,10 @@
   }
 
   #file-upload-button {
-        @include button_style(10px, 1px, $color-principal, white, 20px);
-        margin-left: 10px;
-      }
+    @include button_style(10px, 1px, $color-principal, white, 20px);
+    width: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

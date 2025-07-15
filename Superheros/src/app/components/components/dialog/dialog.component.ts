@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   MatDialog,
   MatDialogActions,
@@ -12,11 +12,6 @@ import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
 import { FormComponent } from "../form/form.component";
 import { formTypes } from '../../../shared/formTypes';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
 import { AlertMsgService } from '../../../services/alert-msg.service';
 
 @Component({

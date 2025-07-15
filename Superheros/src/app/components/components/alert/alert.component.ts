@@ -22,7 +22,7 @@ export class AlertComponent implements OnInit {
       setTimeout(() => {
         this.isDisplayed.set(false);
         this.alert = null;
-      }, 2000);
+      }, 3000);
     });
   }
 }

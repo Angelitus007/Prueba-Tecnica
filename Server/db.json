@@ -12,17 +12,9 @@
       "id": "1",
       "name": "Batman",
       "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
+      "city": "Gotham, USA.",
       "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
-      "imageURL": "http://localhost:3000/batman.png",
-      "city": "Gotham, USA."
-    },
-    {
-      "id": "2",
-      "name": "Wonder Woman",
-      "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
-      "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
-      "imageURL": "http://localhost:3000/wonderwoman.png",
-      "city": "Washington D.C., USA."
+      "imageURL": "http://localhost:3000/batman.png"
     },
     {
       "id": "3",
@@ -31,30 +23,6 @@
       "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
       "imageURL": "http://localhost:3000/spiderman.jpg",
       "city": "New York, USA."
-    },
-    {
-      "id": "4",
-      "name": "Iron Man",
-      "superpower": "Genio inventor, armadura avanzada con múltiples capacidades",
-      "description": "Tony Stark, multimillonario que combate amenazas globales con su armadura.",
-      "imageURL": "http://localhost:3000/ironman.png",
-      "city": "Los Angeles, USA."
-    },
-    {
-      "id": "5",
-      "name": "Thor",
-      "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
-      "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
-      "imageURL": "http://localhost:3000/thor.png",
-      "city": "Nueva York, USA."
-    },
-    {
-      "id": "6",
-      "name": "Hulk",
-      "superpower": "Fuerza inmensa, resistencia casi infinita, regeneración acelerada",
-      "description": "Bruce Banner se transforma en Hulk cuando su ira alcanza el límite.",
-      "imageURL": "http://localhost:3000/hulk.jpg",
-      "city": "Nueva York, USA."
     },
     {
       "id": "7",

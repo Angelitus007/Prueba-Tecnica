@@ -6,6 +6,7 @@ import { debounce, debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Hero } from '../../../models/hero';
 import { MatDialogClose } from '@angular/material/dialog';
+import { AlertMsgService } from '../../../services/alert-msg.service';
 
 @Component({
   selector: 'c-form',
@@ -41,6 +42,7 @@ export class FormComponent implements OnInit {
   form!: FormGroup;
 
   private readonly _heroRequestService = inject(HeroRequestsService);
+  private readonly _alertMsgService = inject(AlertMsgService);
 
   inicializarForm(controls: Array<{ controlName: string; validators?: any[] }>) {
     this.form = this.fb.group(
@@ -88,10 +90,12 @@ export class FormComponent implements OnInit {
     if( this.formToShow() === formTypes.createHero) {
         const newHero = this.heroConstruction();
         this._heroRequestService.createHero(newHero);
+        this._alertMsgService.showAlert('success', 'Héroe creado con éxito');
         this.form.reset();
     } else if (this.formToShow() === formTypes.updateHero) {
         const updatedHero = this.heroUpdate();
         this._heroRequestService.updateHero(updatedHero);
+        this._alertMsgService.showAlert('success', 'Héroe modificado con éxito');
         this.form.reset();
     }
   }
