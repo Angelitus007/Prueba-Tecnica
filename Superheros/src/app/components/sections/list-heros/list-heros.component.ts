@@ -27,10 +27,6 @@ export class ListHerosComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initHeroList();
-
-    console.log('Total heroes:', this._totalHeroes());
-    console.log('Current index:', this._index());
-    console.log('View more:', this._viewMore());
   }
 
   protected initHeroList(): void {
