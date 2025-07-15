@@ -18,13 +18,11 @@
     },
     {
       "id": "2",
-      "imageURL": "http://localhost:3000/wonderwoman.png",
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
-      "city": "Washington D.C., USA.",
       "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
-      "photo": "http://localhost:3000/wonderwoman.png",
-      "terms": true
+      "imageURL": "http://localhost:3000/wonderwoman.png",
+      "city": "Washington D.C., USA."
     },
     {
       "id": "3",
@@ -97,6 +95,38 @@
       "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
       "imageURL": "http://localhost:3000/blackwidow.jpg",
       "city": "Moscú, RU."
+    },
+    {
+      "id": "12",
+      "name": "Aquaman",
+      "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",
+      "description": "Rey de Atlantis, guardaespaldas de los océanos y la tierra.",
+      "imageURL": "http://localhost:3000/aquaman.png",
+      "city": "Miami, USA."
+    },
+    {
+      "id": "13",
+      "name": "The Flash",
+      "superpower": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
+      "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
+      "imageURL": "http://localhost:3000/flash.jpg",
+      "city": "Central City, USA."
+    },
+    {
+      "id": "14",
+      "name": "Green Lantern",
+      "superpower": "Poderes de anillo de energía, voluntad indomable",
+      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
+      "imageURL": "http://localhost:3000/greenlantern.png",
+      "city": "Coast City, USA."
+    },
+    {
+      "id": "15",
+      "name": "Cyborg",
+      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
+      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
+      "imageURL": "http://localhost:3000/cyborg.jpg",
+      "city": "Detroit, USA."
     }
   ]
 }

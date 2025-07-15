@@ -1,4 +1,4 @@
-import { Component, inject, linkedSignal, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, linkedSignal, OnInit, signal } from '@angular/core';
 import { HeroCardComponent } from "../../components/hero-card/hero-card.component";
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
@@ -15,7 +15,7 @@ export class ListHerosComponent implements OnInit {
 
   private _viewMore = signal<boolean>(true);
   private _index = signal<number>(8);
-  private _totalHeroes!: number;
+  private _totalHeroes = computed(() => this._heroRequestsService.heroes().length);
 
   private _visibleHeroes = linkedSignal({
     source: () => ({allHeroes: this._heroRequestsService.heroes(),
@@ -27,28 +27,34 @@ export class ListHerosComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initHeroList();
+
+    console.log('Total heroes:', this._totalHeroes());
+    console.log('Current index:', this._index());
+    console.log('View more:', this._viewMore());
   }
 
   protected initHeroList(): void {
     this._heroRequestsService.getAllHeroes();
-    this._totalHeroes = this._heroRequestsService.heroes().length
   }
 
-  protected loadMoreHeroes(heroesToDisplay: number): void {
-    const nextIndex = this._index() + heroesToDisplay;
-    this._index.set(nextIndex);
+  protected toggleHeroes(heroesToDisplay: number): void {
+    const totalHeroes = this._totalHeroes();
+    const currentIndex = this._index();
 
-    if (nextIndex >= this._totalHeroes) {
-      this._viewMore.set(false);
-    }
-  }
+    if (this._viewMore()) {
+      const nextIndex = Math.min(currentIndex + heroesToDisplay, totalHeroes);
+      this._index.set(nextIndex);
 
-  protected showLessHeroes(heroesToDisplay: number): void {
-    const nextIndex = Math.max(this._index() - heroesToDisplay, 0);
-    this._index.set(nextIndex);
+      if (nextIndex >= totalHeroes) {
+        this._viewMore.set(false);
+      }
+    } else {
+      const nextIndex = Math.max(currentIndex - heroesToDisplay, 8);
+      this._index.set(nextIndex);
 
-    if (this._index() <= heroesToDisplay * 2) {
-      this._viewMore.set(true);
+      if (nextIndex <= 8) {
+        this._viewMore.set(true);
+      }
     }
   }
 
@@ -60,7 +66,11 @@ export class ListHerosComponent implements OnInit {
     return this._viewMore();
   }
 
-   public get visibleHeroes(): Hero[] {
+  public get visibleHeroes(): Hero[] {
     return this._visibleHeroes();
+  }
+
+  public get totalHeroes(): number {
+    return this._totalHeroes();
   }
 }

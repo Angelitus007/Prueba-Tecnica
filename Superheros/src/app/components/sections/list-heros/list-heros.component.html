@@ -19,9 +19,9 @@
       }
     }
 
-    @if (visibleHeroes.length > 0) {
+    @if (totalHeroes > 8) {
       <button class="s-list-heros__view-more" #interactionElement
-              (click)="viewMore ? loadMoreHeroes(4) : showLessHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
+              (click)="toggleHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
 
       @defer (on interaction(interactionElement)) {
         <!--
