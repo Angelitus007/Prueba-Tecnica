@@ -20,10 +20,14 @@
     }
 
     @if (visibleHeroes.length > 0) {
-      <button class="s-list-heros__view-more" #interactionElement (click)="viewMore ? loadMoreHeroes(4) : showLessHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
+      <button class="s-list-heros__view-more" #interactionElement
+              (click)="viewMore ? loadMoreHeroes(4) : showLessHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
 
       @defer (on interaction(interactionElement)) {
-        <!--<p>Mostrar más héroes?</p> -->
+        <!--
+        No lo he conseguido.
+        La idea era que al hacer click en el botón "Ver más" se cargaran más héroes de forma diferida.
+        -->
       }
     }
   </div>

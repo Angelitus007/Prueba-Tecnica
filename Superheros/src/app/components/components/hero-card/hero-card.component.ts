@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { Hero } from '../../../models/hero';
-import { HeroRequestsService } from '../../../services/hero-requests.service';
-import { Dialog } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Dialogs } from '../../../shared/dialogTypes';
@@ -19,12 +17,14 @@ export class HeroCardComponent {
 
   private readonly dialog = inject(MatDialog);
 
-  deleteHero(): void {
+  protected deleteHero(): void {
     const hero = this.hero();
     if (hero) {
       this.dialog.open(DialogComponent, {
-        width: '703px',
-        height: '267px',
+        width: '43.9375rem',
+        height: '16.6875rem',
+        position: { top: '5%' },
+
         data: {
           hero: hero,
           dialogToShow: Dialogs.DeleteHero,
@@ -33,10 +33,12 @@ export class HeroCardComponent {
     }
   }
 
-  updateHero(): void {
+  protected updateHero(): void {
     const hero = this.hero();
     if (hero) {
       this.dialog.open(DialogComponent, {
+        position: { top: '5%' },
+
         data: {
           hero: hero,
           dialogToShow: Dialogs.UpdateHero,

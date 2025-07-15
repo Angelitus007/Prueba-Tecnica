@@ -1,7 +1,7 @@
 <div class="c-dialog">
   @switch (dialogToShow) {
 
-    @case (Dialogs.DeleteHero) {
+    @case (dialogEnum.DeleteHero) {
     <div class="c-dialog__header c-dialog__header--delete">
       <h2 mat-dialog-title>Eliminar héroe</h2>
       <mat-dialog-actions>
@@ -25,7 +25,7 @@
     </mat-dialog-actions>
     }
 
-    @case (Dialogs.CreateHero) {
+    @case (dialogEnum.CreateHero) {
     <div class="c-dialog__header c-dialog__header--create-update">
       <h2 mat-dialog-title>Crear nuevo héroe</h2>
       <mat-dialog-actions>
@@ -36,11 +36,11 @@
     </div>
 
     <mat-dialog-content>
-      <c-form [formToShow]="formTypes.createHero" />
+      <c-form [formToShow]="formTypesEnum.createHero" />
     </mat-dialog-content>
     }
 
-    @case (Dialogs.UpdateHero) {
+    @case (dialogEnum.UpdateHero) {
     <div class="c-dialog__header c-dialog__header--create-update">
       <h2 mat-dialog-title>Editar héroe</h2>
       <mat-dialog-actions>
@@ -51,7 +51,7 @@
     </div>
 
     <mat-dialog-content>
-      <c-form [formToShow]="formTypes.updateHero" [heroDataFromDialog]="hero" />
+      <c-form [formToShow]="formTypesEnum.updateHero" [heroDataFromDialog]="hero" />
     </mat-dialog-content>
     }
   }

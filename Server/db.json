@@ -12,17 +12,25 @@
       "id": "1",
       "name": "Batman",
       "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
-      "city": "Gotham, USA.",
       "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
-      "imageURL": "http://localhost:3000/batman.png"
+      "imageURL": "http://localhost:3000/batman.png",
+      "city": "Gotham, USA."
     },
     {
-      "id": "3",
-      "name": "Spider-Man",
-      "superpower": "Fuerza arácnida, agilidad, sentido arácnido, trepar muros",
-      "description": "Peter Parker, joven periodista que salva Nueva York con sus habilidades arácnidas.",
-      "imageURL": "http://localhost:3000/spiderman.jpg",
-      "city": "New York, USA."
+      "id": "5",
+      "name": "Thor",
+      "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
+      "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
+      "imageURL": "http://localhost:3000/thor.png",
+      "city": "Nueva York, USA."
+    },
+    {
+      "id": "6",
+      "name": "Hulk",
+      "superpower": "Fuerza inmensa, resistencia casi infinita, regeneración acelerada",
+      "description": "Bruce Banner se transforma en Hulk cuando su ira alcanza el límite.",
+      "imageURL": "http://localhost:3000/hulk.jpg",
+      "city": "Nueva York, USA."
     },
     {
       "id": "7",
@@ -58,11 +66,11 @@
     },
     {
       "id": "11",
-      "name": "Black Widow",
+      "name": "Black Wido",
       "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
+      "city": "Moscú, RU.",
       "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
-      "imageURL": "http://localhost:3000/blackwidow.jpg",
-      "city": "Moscú, RU."
+      "imageURL": "http://localhost:3000/blackwidow.jpg"
     },
     {
       "id": "12",
@@ -87,14 +95,6 @@
       "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
       "imageURL": "http://localhost:3000/greenlantern.png",
       "city": "Coast City, USA."
-    },
-    {
-      "id": "15",
-      "name": "Cyborg",
-      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
-      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
-      "imageURL": "http://localhost:3000/cyborg.jpg",
-      "city": "Detroit, USA."
     }
   ]
 }

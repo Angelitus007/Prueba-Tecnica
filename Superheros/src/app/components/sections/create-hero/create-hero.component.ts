@@ -13,17 +13,11 @@ export class CreateHeroComponent {
 
   private readonly dialog = inject(MatDialog);
 
-  openDialog(): void {
-    this.dialog.open(DialogComponent);
-  }
-
-  createHero(): void {
+  protected createHero(): void {
     this.dialog.open(DialogComponent, {
       data: {
         dialogToShow: Dialogs.CreateHero,
       }
     });
-
-    
   }
 }

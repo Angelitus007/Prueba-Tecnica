@@ -1,11 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Dialogs } from '../../../shared/dialogTypes';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
@@ -22,33 +16,30 @@ import { AlertMsgService } from '../../../services/alert-msg.service';
 })
 export class DialogComponent implements OnInit {
 
-  protected Dialogs = Dialogs;
+  protected dialogEnum = Dialogs;
   protected dialogToShow!: Dialogs;
 
-  protected formTypes = formTypes;
+  protected formTypesEnum = formTypes;
   protected hero!: Hero;
 
+  private readonly _alertMsgService = inject(AlertMsgService);
   private readonly _heroRequestsService = inject(HeroRequestsService);
   heroData = inject(MAT_DIALOG_DATA);
 
-  private readonly _alertMsgService = inject(AlertMsgService);
+  public ngOnInit(): void {
+    this.initDataFromDialog();
+  }
 
-
-  initDataFromDialog(): void {
+  private initDataFromDialog(): void {
     if (this.heroData) {
       this.dialogToShow = this.heroData.dialogToShow;
       this.hero = this.heroData.hero;
     }
   }
 
-  ngOnInit(): void {
-    this.initDataFromDialog();
-  }
-
-  deleteHero(): void {
+  protected deleteHero(): void {
     if (this.hero.id !== undefined) {
       this._heroRequestsService.deleteHero(this.hero.id);
-
       this._alertMsgService.showAlert('success', 'Este héroe se ha eliminado');
     }
   }

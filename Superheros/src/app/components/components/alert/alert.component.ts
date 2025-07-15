@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Alert, AlertMsgService } from '../../../services/alert-msg.service';
+import { AlertMsgService } from '../../../services/alert-msg.service';
 import { CommonModule } from '@angular/common';
+import { Alert } from '../../../models/alert';
 
 @Component({
   selector: 'app-alert',
@@ -14,7 +15,7 @@ export class AlertComponent implements OnInit {
   private readonly _alertService = inject(AlertMsgService);
   alert: Alert | null = null;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._alertService.alert$.subscribe((alert: Alert) => {
       this.alert = alert;
       this.isDisplayed.set(true);

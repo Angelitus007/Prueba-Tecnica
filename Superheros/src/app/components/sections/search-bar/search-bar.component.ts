@@ -9,6 +9,5 @@ import { formTypes } from '../../../shared/formTypes';
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
-
-  protected formTypes = formTypes;
+  protected formTypesEnum = formTypes;
 }

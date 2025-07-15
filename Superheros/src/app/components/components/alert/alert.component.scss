@@ -12,15 +12,13 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   font-size: 16px;
-  background-color: $color-success;
-
   z-index: 1000;
 
-  .success {
+  &.success {
     background-color: $color-success;
   }
 
-  .error {
+  &.error {
     background-color: $color-error;
   }
 

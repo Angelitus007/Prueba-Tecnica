@@ -17,9 +17,8 @@ import { AlertMsgService } from '../../../services/alert-msg.service';
 export class FormComponent implements OnInit {
 
   protected formTypes = formTypes;
-  formToShow = input<formTypes>();
-  heroDataFromDialog = input<Hero>();
-
+  readonly formToShow = input<formTypes>();
+  readonly heroDataFromDialog = input<Hero>();
 
   formFields: Array<{ controlName: string; type: string; label?: string; placeholder?: string; validators?: any[] }> = [];
 
