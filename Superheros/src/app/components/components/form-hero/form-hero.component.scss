@@ -1,0 +1,90 @@
+@import '../../../../styles.scss';
+
+.c-form-hero {
+
+  @include flex-style(column, center, flex-start);
+
+  &__button {
+    @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
+
+    &:disabled {
+      @include button_style(0.625rem, 0.0625rem, $color-deshabilitado, white, 1.25rem);
+    }
+  }
+
+  &__checkbox-label {
+    a {
+      color: inherit;
+    }
+  }
+
+  &__first-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+
+    @media (max-width: 48rem) {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+  }
+
+  &__input {
+    background-color: $color-form;
+    border: none;
+    border-radius: 0.3125rem;
+
+    height: 2.25rem;
+    padding: 0.625rem;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__item {
+
+    @include flex-style(column, center, left);
+    width: 100%;
+
+    &--checkbox {
+      margin-bottom: 1.25rem;
+
+      @include flex-style(row, space-between, center);
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    &--file {
+      background-color: transparent !important;
+    }
+  }
+
+  &__label {
+    font-size: 1rem;
+  }
+
+  &__other-rows {
+    @include flex-style(column, center, flex-start);
+    margin-top: 1.25rem;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  &__textarea {
+    background-color: $color-form;
+    border: none;
+    border-radius: 0.3125rem;
+
+    height: 3.75rem;
+    padding: 0.625rem;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

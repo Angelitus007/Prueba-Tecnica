@@ -4,14 +4,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Dialogs } from '../../../shared/dialogTypes';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
-import { FormComponent } from "../form/form.component";
 import { formTypes } from '../../../shared/formTypes';
 import { AlertMsgService } from '../../../services/alert-msg.service';
 import { FormHeroComponent } from "../form-hero/form-hero.component";
 
 @Component({
   selector: 'c-dialog',
-  imports: [MatDialogContent, MatDialogActions, MatDialogClose, MatDialogTitle, FormComponent, FormHeroComponent],
+  imports: [MatDialogContent, MatDialogActions, MatDialogClose, MatDialogTitle, FormHeroComponent],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss'
 })

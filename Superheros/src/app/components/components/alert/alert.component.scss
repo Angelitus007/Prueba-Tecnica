@@ -3,15 +3,15 @@
 .c-alert {
   position: fixed;
 
-  top: 20px;
+  top: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
 
   color: black;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.25rem 0.375rem rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
   z-index: 1000;
 
   &.success {
@@ -22,14 +22,13 @@
     background-color: $color-error;
   }
 
-
   &__message {
     @include flex-style(row, center, center);
-    gap: 8px;
+    gap: 0.5rem;
   }
 
   &__img {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }

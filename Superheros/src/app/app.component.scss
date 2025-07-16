@@ -4,14 +4,14 @@
 
   &__header {
     width: 100%;
-    height: 480px;
+    height: 30rem;
     position: relative;
   }
 
   &__img-header {
     width: 100%;
-    height: 480px;
-    left: -1px;
+    height: 30rem;
+    left: -0.0625rem;
     object-fit: fit;
     display: block;
     z-index: 1;
@@ -19,20 +19,20 @@
 
   &__logo {
     position: absolute;
-    width: 246px;
-    height: 111px;
-    top: 72px;
-    left: 88px;
+    width: 15.375rem;
+    height: 6.9375rem;
+    top: 4.5rem;
+    left: 5.5rem;
     z-index: 2;
   }
 
   &__info {
     position: absolute;
-    top: 264px;
-    left: 1280px;
+    top: 16.5rem;
+    left: 80rem;
     z-index: 2;
     color: #000000;
-    font-size: 64px;
+    font-size: 4rem;
     font-weight: bold;
     font-family: 'Comic Sans MS', sans-serif;
   }
@@ -41,22 +41,22 @@
     margin-top: auto;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
 
     &__header {
-      height: 480px;
+      height: 30rem;
     }
 
     &__img-header {
-      height: 480px;
+      height: 30rem;
       object-fit: cover;
     }
 
     &__logo {
       left: 50%;
       transform: translateX(-50%);
-      width: 204px;
-      height: 92.05px;
+      width: 12.75rem;
+      height: 5.7531rem;
     }
 
     &__info {

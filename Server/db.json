@@ -2,11 +2,13 @@
   "superheros": [
     {
       "id": "0",
+      "imageURL": "http://localhost:3000/superman.jpg",
       "name": "Superman",
       "superpower": "Súper fuerza, vuelo, visión láser, invulnerabilidad",
+      "city": "Metropolis, USA.",
       "description": "El Hombre de Acero, protector de Metrópolis, originario del planeta Krypton.",
-      "imageURL": "http://localhost:3000/superman.jpg",
-      "city": "Metropolis, USA."
+      "photo": "http://localhost:3000/superman.jpg",
+      "terms": true
     },
     {
       "id": "1",
@@ -18,11 +20,13 @@
     },
     {
       "id": "2",
+      "imageURL": "http://localhost:3000/wonderwoman.png",
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
+      "city": "Washington D.C., USA.",
       "description": "Princesa de Themyscira y embajadora de paz, defensora de la humanidad.",
-      "imageURL": "http://localhost:3000/wonderwoman.png",
-      "city": "Washington D.C., USA."
+      "photo": "http://localhost:3000/wonderwoman.png",
+      "terms": true
     },
     {
       "id": "3",
@@ -42,11 +46,13 @@
     },
     {
       "id": "5",
+      "imageURL": "http://localhost:3000/thor.png",
       "name": "Thor",
       "superpower": "Poderes divinos asgardianos, control del trueno, fuerza sobrehumana",
+      "city": "Nueva York, USA.",
       "description": "Dios del trueno, defensor de los Nueve Reinos con su martillo Mjolnir.",
-      "imageURL": "http://localhost:3000/thor.png",
-      "city": "Nueva York, USA."
+      "photo": "http://localhost:3000/thor.png",
+      "terms": true
     },
     {
       "id": "6",
@@ -111,22 +117,6 @@
       "description": "Barry Allen, el hombre más rápido vivo, defensor de Central City.",
       "imageURL": "http://localhost:3000/flash.jpg",
       "city": "Central City, USA."
-    },
-    {
-      "id": "14",
-      "name": "Green Lantern",
-      "superpower": "Poderes de anillo de energía, voluntad indomable",
-      "description": "Hal Jordan, miembro del Green Lantern Corps que defiende el universo.",
-      "imageURL": "http://localhost:3000/greenlantern.png",
-      "city": "Coast City, USA."
-    },
-    {
-      "id": "15",
-      "name": "Cyborg",
-      "superpower": "Integración humano-tecnológica, fuerza y armamento avanzado",
-      "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
-      "imageURL": "http://localhost:3000/cyborg.jpg",
-      "city": "Detroit, USA."
     }
   ]
 }

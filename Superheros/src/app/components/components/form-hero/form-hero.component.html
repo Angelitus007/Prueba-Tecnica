@@ -1,10 +1,50 @@
-<form class="c-form" [formGroup]="form" (submit)="onSubmit()">
+<form class="c-form-hero" [formGroup]="form" (submit)="onSubmit()">
 
-  <div class="c-form__first-row"></div>
+  <div class="c-form-hero__first-row">
+    
+    <div class="c-form-hero__item">
+      <label class="c-form-hero__label" for="name">Nombre</label>
+      <input class="c-form-hero__input" id="name" type="text" formControlName="name" placeholder="Nombre" />
+    </div>
 
+    <div class="c-form-hero__item">
+      <label class="c-form-hero__label" for="superpower">Superpoder</label>
+      <input class="c-form-hero__input" id="superpower" type="text" formControlName="superpower"
+        placeholder="Superpoder" />
+    </div>
+  </div>
 
-      <button class="c-form__button" type="submit" mat-dialog-close [disabled]="form.invalid || form.pristine">
+  <div class="c-form-hero__other-rows">
 
+    <div class="c-form-hero__item">
+      <label class="c-form-hero__label" for="city">Ciudad</label>
+      <input class="c-form-hero__input" id="city" type="text" formControlName="city" placeholder="Ciudad" />
+    </div>
+
+    <div class="c-form-hero__item">
+      <label class="c-form-hero__label" for="description">Descripción</label>
+      <textarea class="c-form-hero__textarea" id="description" formControlName="description"
+        placeholder="Descripción"></textarea>
+    </div>
+
+    <div class="c-form-hero__item c-form-hero__item--file">
+      <label class="c-form-hero__label" for="photo">Elige una imagen</label>
+      <input class="c-form-hero__input" id="photo" type="file" (change)="onFileSelected($event)"
+        accept="image/*" />
+    </div>
+
+    <div class="c-form-hero__item c-form-hero__item--checkbox">
+      <div class="c-form-hero__checkbox">
+        <input class="c-form-hero__checkbox-input" id="terms" type="checkbox" formControlName="terms" />
+        <label class="c-form-hero__checkbox-label" for="terms">
+          Acepto los
+          <a href="/terms" target="_blank">Términos y condiciones</a>
+        </label>
+      </div>
+
+      <button class="c-form-hero__button" type="submit" [disabled]="form.invalid || form.pristine">
+        {{ this.formToShow() === formTypesEnum.createHero ? 'Crear héroe' : 'Guardar cambios' }}
       </button>
-
+    </div>
+  </div>
 </form>
