@@ -34,14 +34,6 @@ export class HeroRequestsService {
     return (maxId + 1).toString();
   }
 
-  public restoreOriginalHeroes(): void {
-    this._heroes.set(this._originalHeroes);
-  }
-
-  public get originalHeroes(): Hero[] {
-    return this._originalHeroes;
-  }
-
   public createHero(hero: Hero): void {
     this.http.post<Hero>(this.apiURL, hero).subscribe(newHero => {
       const updatedHeroList = [...this._heroes(), newHero];
@@ -62,6 +54,14 @@ export class HeroRequestsService {
       const updatedHeroes = this._heroes().filter(h => h.id !== id)
       this._heroes.set(updatedHeroes);
     });
+  }
+
+  public restoreOriginalHeroes(): void {
+    this._heroes.set(this._originalHeroes);
+  }
+
+  public get originalHeroes(): Hero[] {
+    return this._originalHeroes;
   }
 
   public get heroes(): Signal<Hero[]> {
