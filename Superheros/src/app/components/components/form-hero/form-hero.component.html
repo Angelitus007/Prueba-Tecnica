@@ -29,7 +29,7 @@
 
     <div class="c-form-hero__item c-form-hero__item--file">
       <label class="c-form-hero__label" for="photo">Elige una imagen</label>
-      <input class="c-form-hero__input" id="photo" type="file" (change)="onFileSelected($event)"
+      <input class="c-form-hero__input" id="photo" type="file" formControlName="photo" (change)="onFileSelected($event)"
         accept="image/*" />
     </div>
 
