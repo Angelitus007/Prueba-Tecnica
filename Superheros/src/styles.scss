@@ -14,3 +14,11 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+button {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+

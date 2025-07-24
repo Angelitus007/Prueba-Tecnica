@@ -6,17 +6,27 @@
   @include styles.flex-style(column, center, flex-start);
 
   &__button {
-    @include styles.button_style(0.625rem, 0.0625rem, styles.$color-principal, white, 1.25rem);
+    @include styles.button_style(0.625rem, 0.0625rem, var(--color-principal), white, 1.25rem);
 
     &:disabled {
-      @include styles.button_style(0.625rem, 0.0625rem, styles.$color-deshabilitado, white, 1.25rem);
+      @include styles.button_style(0.625rem, 0.0625rem, var(--color-deshabilitado), white, 1.25rem);
+      cursor: not-allowed;
     }
   }
 
   &__checkbox-label {
+    cursor: pointer;
     a {
       color: inherit;
+
+      &:hover {
+        color: var(--color-principal);
+      }
     }
+  }
+
+  &__checkbox-input {
+    cursor: pointer;
   }
 
   &__first-row {
@@ -31,7 +41,7 @@
   }
 
   &__input {
-    background-color: styles.$color-form;
+    background-color: var(--color-form);
     border: none;
     border-radius: 0.3125rem;
 
@@ -74,7 +84,7 @@
   }
 
   &__textarea {
-    background-color: styles.$color-form;
+    background-color: var(--color-form);
     border: none;
     border-radius: 0.3125rem;
 

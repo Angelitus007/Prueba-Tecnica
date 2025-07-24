@@ -51,13 +51,13 @@
     gap: 0.625rem;
 
     &--cancel {
-      @include styles.button_style(0.625rem, 0.0625rem, styles.$color-eliminar, black, 1.25rem);
+      @include styles.button_style(0.625rem, 0.0625rem, var(--color-eliminar), black, 1.25rem);
         width: 8.4375rem;
         height: 2.5rem;
     }
 
     &--delete {
-      @include styles.button_style(0.625rem, 0.0625rem, styles.$color-principal, white, 1.25rem);
+      @include styles.button_style(0.625rem, 0.0625rem, var(--color-principal), white, 1.25rem);
       width: 8.4375rem;
       height: 2.5rem;
     }

@@ -15,11 +15,11 @@
   z-index: 1000;
 
   &.success {
-    background-color: styles.$color-success;
+    background-color: var(--color-success);
   }
 
   &.error {
-    background-color: styles.$color-error;
+    background-color:  var(--color-error);
   }
 
   &__message {

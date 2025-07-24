@@ -6,7 +6,7 @@
       <h2 mat-dialog-title>Eliminar héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button">
+          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
         </button>
       </mat-dialog-actions>
     </div>
@@ -30,7 +30,7 @@
       <h2 mat-dialog-title>Crear nuevo héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button">
+          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
         </button>
       </mat-dialog-actions>
     </div>
@@ -45,13 +45,13 @@
       <h2 mat-dialog-title>Editar héroe</h2>
       <mat-dialog-actions>
         <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button">
+          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
         </button>
       </mat-dialog-actions>
     </div>
 
     <mat-dialog-content>
-      <c-form-hero [formToShow]="formTypesEnum.updateHero" [heroDataFromDialog]="hero" />
+      <c-form-hero [formToShow]="formTypesEnum.updateHero" [heroDataFromDialog]="hero"/>
     </mat-dialog-content>
     }
   }

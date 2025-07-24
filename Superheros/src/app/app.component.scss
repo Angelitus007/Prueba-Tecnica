@@ -1,18 +1,26 @@
+@use '../styles.scss' as styles;
+
 .p-main {
 
   &__header {
     width: 100%;
     height: 30rem;
     position: relative;
+
+    @media (max-width: var(--phone-max)) {
+      height: 30rem;
+    }
   }
 
   &__img-header {
     width: 100%;
-    height: 30rem;
-    left: -0.0625rem;
-    object-fit: fit;
-    display: block;
+    height: 480px;
+    object-fit: cover;
     z-index: 1;
+
+    @media (max-width: var(--phone-max)) {
+      height: 30rem;
+    }
   }
 
   &__logo {
@@ -22,43 +30,16 @@
     top: 4.5rem;
     left: 5.5rem;
     z-index: 2;
-  }
 
-  &__info {
-    position: absolute;
-    top: 16.5rem;
-    left: 80rem;
-    z-index: 2;
-    color: #000000;
-    font-size: 4rem;
-    font-weight: bold;
-    font-family: 'Comic Sans MS', sans-serif;
-  }
-
-  &__footer {
-    margin-top: auto;
-  }
-
-  @media (max-width: 48rem) {
-
-    &__header {
-      height: 30rem;
-    }
-
-    &__img-header {
-      height: 30rem;
-      object-fit: cover;
-    }
-
-    &__logo {
+    @media (max-width: var(--phone-max)) {
       left: 50%;
       transform: translateX(-50%);
       width: 12.75rem;
       height: 5.7531rem;
     }
+  }
 
-    &__info {
-      display: none;
-    }
+  &__footer {
+    margin-top: auto;
   }
 }
