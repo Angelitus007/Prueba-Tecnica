@@ -1,4 +1,5 @@
-@import '../../../../styles.scss';
+@use '../../../../styles.scss' as styles;
+
 
 .hero-card {
 
@@ -21,21 +22,21 @@
   }
 
   &__buttons {
-    @include flex-style(row, center, center);
+    @include styles.flex-style(row, center, center);
     gap: 1rem;
     width: 17.875rem;
   }
 
   &__b-editar {
-    @include flex-style(row, center, center);
-    @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
+    @include styles.flex-style(row, center, center);
+    @include styles.button_style(0.625rem, 0.0625rem, styles.$color-principal, white, 1.25rem);
     width: 8.4375rem;
     height: 2.5rem;
     gap: 0.5rem;
   }
 
   &__b-eliminar {
-    @include button_style(0.625rem, 0.0625rem, $color-eliminar, black, 1.25rem);
+    @include styles.button_style(0.625rem, 0.0625rem, styles.$color-eliminar, black, 1.25rem);
     width: 8.4375rem;
     height: 2.5rem;
   }

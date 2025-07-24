@@ -1,28 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@forward './mixins.scss';
+@forward './global-variables.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-// Para títulos y botones principales
-$color-principal: #8A42FB;
-$color-eliminar: #F3F3F3;
-$color-deshabilitado: #E7D8FE;
-$color-form: rgba(214, 230, 248, 0.573);
-$color-success: #29F4B0;
-$color-error: #FB6A6A;
-
-@mixin flex-style($direction, $justify, $align) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
-
-@mixin button_style($pad, $border, $bckg_col, $col, $b_rad) {
-  padding: $pad;
-  border: solid $border $bckg_col;
-  background-color: $bckg_col;
-  color: $col;
-  border-radius: $b_rad;
-}
 
 html,
 body {

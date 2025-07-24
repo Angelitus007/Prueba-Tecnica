@@ -1,14 +1,15 @@
-@import '../../../../styles.scss';
+@use '../../../../styles.scss' as styles;
+
 
 .c-form-hero {
 
-  @include flex-style(column, center, flex-start);
+  @include styles.flex-style(column, center, flex-start);
 
   &__button {
-    @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
+    @include styles.button_style(0.625rem, 0.0625rem, styles.$color-principal, white, 1.25rem);
 
     &:disabled {
-      @include button_style(0.625rem, 0.0625rem, $color-deshabilitado, white, 1.25rem);
+      @include styles.button_style(0.625rem, 0.0625rem, styles.$color-deshabilitado, white, 1.25rem);
     }
   }
 
@@ -30,7 +31,7 @@
   }
 
   &__input {
-    background-color: $color-form;
+    background-color: styles.$color-form;
     border: none;
     border-radius: 0.3125rem;
 
@@ -45,13 +46,13 @@
 
   &__item {
 
-    @include flex-style(column, center, left);
+    @include styles.flex-style(column, center, left);
     width: 100%;
 
     &--checkbox {
       margin-bottom: 1.25rem;
 
-      @include flex-style(row, space-between, center);
+      @include styles.flex-style(row, space-between, center);
       gap: 1.25rem;
       width: 100%;
     }
@@ -66,14 +67,14 @@
   }
 
   &__other-rows {
-    @include flex-style(column, center, flex-start);
+    @include styles.flex-style(column, center, flex-start);
     margin-top: 1.25rem;
     gap: 1.25rem;
     width: 100%;
   }
 
   &__textarea {
-    background-color: $color-form;
+    background-color: styles.$color-form;
     border: none;
     border-radius: 0.3125rem;
 

@@ -1,4 +1,4 @@
-@import '../../../../styles.scss';
+@use '../../../../styles.scss' as styles;
 
 .c-alert {
   position: fixed;
@@ -15,15 +15,15 @@
   z-index: 1000;
 
   &.success {
-    background-color: $color-success;
+    background-color: styles.$color-success;
   }
 
   &.error {
-    background-color: $color-error;
+    background-color: styles.$color-error;
   }
 
   &__message {
-    @include flex-style(row, center, center);
+    @include styles.flex-style(row, center, center);
     gap: 0.5rem;
   }
 

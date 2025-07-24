@@ -1,4 +1,4 @@
-@import '../../../../styles.scss';
+@use '../../../../styles.scss' as styles;
 
 .s-list-heros {
 
@@ -7,11 +7,11 @@
   margin: 0 auto;
 
   &__info {
-    @include flex-style(column, center, center);
+    @include styles.flex-style(column, center, center);
   }
 
   &__header {
-    color: $color-principal;
+    color: styles.$color-principal;
     text-align: center;
     width: 41.25rem;
     font-weight: 400;
@@ -38,7 +38,7 @@
     margin-top: 3.75rem;
     margin-bottom: 1.875rem;
     width: 8.4375rem;
-    @include button_style(0.625rem, 0.0625rem, $color-principal, white, 1.25rem);
+    @include styles.button_style(0.625rem, 0.0625rem, styles.$color-principal, white, 1.25rem);
   }
 
   &__empty {
