@@ -127,66 +127,6 @@
       "description": "Victor Stone, mitad hombre mitad máquina, con conexión global.",
       "imageURL": "http://localhost:3000/cyborg.jpg",
       "city": "Detroit, USA."
-    },
-    {
-      "id": "16",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
-    },
-    {
-      "id": "17",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
-    },
-    {
-      "id": "17",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
-    },
-    {
-      "id": "18",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
-    },
-    {
-      "id": "19",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
-    },
-    {
-      "id": "19",
-      "imageURL": "C:\\fakepath\\spiderman.jpg",
-      "name": "Supermansito",
-      "superpower": "Volar",
-      "city": "Metropolis",
-      "description": "Un héroe que puede volar y tiene una fuerza increíble.",
-      "photo": "C:\\fakepath\\spiderman.jpg",
-      "terms": true
     }
   ]
 }
