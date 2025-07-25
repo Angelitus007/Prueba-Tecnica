@@ -1,13 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+// Primero de todo cargamos el archivo de reset.scss
+@use './reset.scss';
+
 @forward './mixins.scss';
 @forward './global-variables.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-html,
-body {
-  height: 100%;
-}
 
 body {
   margin: 0;
