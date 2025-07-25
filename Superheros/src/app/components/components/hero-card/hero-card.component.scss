@@ -18,7 +18,8 @@
   &__buttons {
     @include styles.flex-style(row, center, center);
     gap: 1rem;
-    width: 17.875rem;
+    width: 100%;
+    margin-top: 0.625rem;
   }
 
   &__b-editar {

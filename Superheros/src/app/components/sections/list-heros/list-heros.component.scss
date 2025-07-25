@@ -3,7 +3,6 @@
 .s-list-heros {
 
   width: 100%;
-  max-width: 84rem;
   margin: 0 auto;
 
   &__info {
@@ -13,18 +12,18 @@
   &__header {
     color: var(--color-principal);
     text-align: center;
-    width: 41.25rem;
+    width: 100%;
     font-weight: 400;
   }
 
   &__description {
     text-align: center;
-    width: 41.25rem;
+    width: 100%;
+    max-width: 41.25rem;
     padding-bottom: 1rem;
   }
 
   &__hero-list {
-
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, 19.875rem);
@@ -37,7 +36,8 @@
     justify-self: center;
     margin-top: 3.75rem;
     margin-bottom: 1.875rem;
-    width: 8.4375rem;
+    width: 100%;
+    max-width: 8.4375rem;
     @include styles.button_style(0.625rem, 0.0625rem, var(--color-principal), white, 1.25rem);
   }
 
@@ -49,11 +49,11 @@
   @media (max-width: 48rem) {
 
     &__description {
-      width: 19.5rem;
+      max-width: 19.5rem;
     }
 
     &__header {
-      width: 19.5rem;
+      max-width: 19.5rem;
     }
   }
 }
