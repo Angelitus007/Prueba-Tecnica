@@ -1,7 +1,13 @@
+@use '../../../../styles.scss' as styles;
+
 .c-form-search {
   &__input {
-    width: 55rem;
-    height: 5.75rem;
+    width: 100%;
+    max-width: 55rem;
+    min-width: 19.5rem;
+    height: auto;
+    max-height: 5.75rem;
+    min-height: 4.5rem;
 
     box-shadow: 0rem 0.25rem 0.3125rem rgba(0, 0, 0, 0.25);
     border: none;
@@ -11,19 +17,14 @@
     font-size: 1rem;
 
     &:focus {
-      outline: none;
-      border: 0.0625rem solid rgba(247, 247, 247, 0.843);
+      outline: 0.0825rem ridge var(--color-principal);
     }
 
     @media (max-width: 64rem) {
-      width: 37.5rem;
-      height: 5.125rem;
       text-indent: 1.875rem;
     }
 
     @media (max-width: 48rem) {
-      width: 19.5rem;
-      height: 4.5rem;
       text-indent: 1.25rem;
     }
   }

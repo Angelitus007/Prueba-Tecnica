@@ -4,11 +4,34 @@
 
   @include styles.flex-style(row, center, center);
   gap: 1.875rem;
-  margin: 1.25rem 0;
+  margin: 1.25rem 2.5rem;
 
   @media (max-width: 48rem) {
     flex-direction: column;
     gap: 1.25rem;
+  }
+
+  &__form {
+    // No entiendo porque tengo que ponerlo 2 veces, he leido algo
+    // que es sobre el encapsulamiento de estilos, pero no creo que
+    // lo hagais así.
+    width: 100%;
+    max-width: 55rem;
+    min-width: 19.5rem;
+    height: auto;
+    max-height: 5.75rem;
+    min-height: 4.5rem;
+  }
+
+  &__button {
+    // Pasa lo mismo aquí
+    width: 100%;
+    max-width: 12.75rem;
+    min-width: 8rem;
+
+    height: auto;
+    max-height: 3.5rem;
+    min-height: 2.5rem;
   }
 
 }
