@@ -3,18 +3,4 @@
 .p-home {
   @include styles.flex-style(column, center, stretch);
   width: 100%;
-
-  &__search-creation {
-    @include styles.flex-style(row, center, center);
-    gap: 1.875rem;
-    margin: 1.25rem 0;
-  }
-
-  @media (max-width: 48rem) {
-    &__search-creation {
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-  }
 }

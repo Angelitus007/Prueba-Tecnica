@@ -1,0 +1,14 @@
+@use '../../../../styles.scss' as styles;
+
+.s-search-creation {
+
+  @include styles.flex-style(row, center, center);
+  gap: 1.875rem;
+  margin: 1.25rem 0;
+
+  @media (max-width: 48rem) {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+}

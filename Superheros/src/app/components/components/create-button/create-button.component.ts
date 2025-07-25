@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../components/dialog/dialog.component';
 import { Dialogs } from '../../../shared/dialogTypes';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
-  selector: 'section-create-hero',
+  selector: 'c-create-button',
   imports: [],
-  templateUrl: './create-hero.component.html',
-  styleUrl: './create-hero.component.scss'
+  templateUrl: './create-button.component.html',
+  styleUrl: './create-button.component.scss'
 })
-export class CreateHeroComponent {
+export class CreateButtonComponent {
 
   private readonly dialog = inject(MatDialog);
 
@@ -20,4 +20,5 @@ export class CreateHeroComponent {
       }
     });
   }
+
 }
