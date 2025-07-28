@@ -37,6 +37,7 @@ export class HeroCardComponent {
     const hero = this.hero();
     if (hero) {
       this.dialog.open(DialogComponent, {
+        width: '75rem',
         position: { top: '5%' },
 
         data: {

@@ -15,6 +15,9 @@ export class CreateButtonComponent {
 
   protected createHero(): void {
     this.dialog.open(DialogComponent, {
+      width: '75rem',
+      position: { top: '5%' },
+
       data: {
         dialogToShow: Dialogs.CreateHero,
       }

@@ -9,14 +9,6 @@
       "city": "Metropolis, USA."
     },
     {
-      "id": "1",
-      "name": "Batman",
-      "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
-      "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
-      "imageURL": "http://localhost:3000/batman.png",
-      "city": "Gotham, USA."
-    },
-    {
       "id": "2",
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",

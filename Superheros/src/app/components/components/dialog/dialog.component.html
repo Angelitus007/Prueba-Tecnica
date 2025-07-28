@@ -1,15 +1,15 @@
 <div class="c-dialog">
+
+  <mat-dialog-actions class="c-dialog__close">
+    <button mat-button mat-dialog-close>
+      <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
+    </button>
+  </mat-dialog-actions>
+
   @switch (dialogToShow) {
 
     @case (dialogEnum.DeleteHero) {
-    <div class="c-dialog__header c-dialog__header--delete">
-      <h2 mat-dialog-title>Eliminar héroe</h2>
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
-        </button>
-      </mat-dialog-actions>
-    </div>
+    <h2 mat-dialog-title class="c-dialog__header">Eliminar héroe</h2>
 
     <mat-dialog-content class="c-dialog__content">
       <img src="assets/alert.svg" alt="Alert Button">
@@ -26,14 +26,7 @@
     }
 
     @case (dialogEnum.CreateHero) {
-    <div class="c-dialog__header c-dialog__header--create-update">
-      <h2 mat-dialog-title>Crear nuevo héroe</h2>
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
-        </button>
-      </mat-dialog-actions>
-    </div>
+    <h2 mat-dialog-title class="c-dialog__header">Crear nuevo héroe</h2>
 
     <mat-dialog-content>
       <c-form-hero [formToShow]="formTypesEnum.createHero" />
@@ -41,14 +34,7 @@
     }
 
     @case (dialogEnum.UpdateHero) {
-    <div class="c-dialog__header c-dialog__header--create-update">
-      <h2 mat-dialog-title>Editar héroe</h2>
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close>
-          <img src="assets/close.svg" alt="Close Button" aria-label="Close Dialog">
-        </button>
-      </mat-dialog-actions>
-    </div>
+    <h2 mat-dialog-title class="c-dialog__header">Editar héroe</h2>
 
     <mat-dialog-content>
       <c-form-hero [formToShow]="formTypesEnum.updateHero" [heroDataFromDialog]="hero"/>
