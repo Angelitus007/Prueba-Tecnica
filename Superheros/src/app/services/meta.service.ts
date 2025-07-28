@@ -25,4 +25,8 @@ export class MetaService {
       }
     });
   }
+
+  public getMetaTags(): Meta {
+    return this.meta;
+  }
 }
