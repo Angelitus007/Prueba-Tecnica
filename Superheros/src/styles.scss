@@ -19,3 +19,31 @@ button {
   }
 }
 
+// Personalización del scrollbar
+
+// Chrome, Safari, Edge
+::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-track-scrollbar);
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-principal);
+  border-radius: 0.25rem;
+  border: 2px solid var(--color-hover-scrollbar);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hover-scrollbar) !important;
+}
+
+// Firefox
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-principal) var(--color-track-scrollbar);
+}
