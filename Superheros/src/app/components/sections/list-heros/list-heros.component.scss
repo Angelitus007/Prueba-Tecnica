@@ -1,7 +1,6 @@
-@use '../../../../styles.scss' as styles;
+@use "../../../../styles/styles.scss" as styles;
 
 .s-list-heros {
-
   width: 100%;
   margin: 0 auto;
 
@@ -38,7 +37,13 @@
     margin-bottom: 1.875rem;
     width: 100%;
     max-width: 8.4375rem;
-    @include styles.button_style(0.625rem, 0.0625rem, var(--color-principal), white, 1.25rem);
+    @include styles.button_style(
+      0.625rem,
+      0.0625rem,
+      var(--color-principal),
+      white,
+      1.25rem
+    );
   }
 
   &__empty {
@@ -46,8 +51,12 @@
     justify-self: center;
   }
 
-  @media (max-width: 48rem) {
+  &__pagination {
+    @include styles.flex-style(row, center, center);
+    margin-top: 1.5625rem;
+  }
 
+  @media (max-width: 48rem) {
     &__description {
       max-width: 19.5rem;
     }

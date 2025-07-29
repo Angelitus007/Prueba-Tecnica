@@ -73,14 +73,6 @@
       "city": "New York, USA."
     },
     {
-      "id": "10",
-      "name": "Doctor Strange",
-      "superpower": "Magia mística, manipulación dimensional, teleportación",
-      "description": "Hechicero supremo defensor de la Tierra contra amenazas mágicas.",
-      "imageURL": "http://localhost:3000/doctorstrange.png",
-      "city": "New York, USA."
-    },
-    {
       "id": "11",
       "name": "Black Widow",
       "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",

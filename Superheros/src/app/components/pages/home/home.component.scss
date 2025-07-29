@@ -1,4 +1,4 @@
-@use '../../../../styles.scss' as styles;
+@use '../../../../styles/styles.scss' as styles;
 
 .p-home {
   @include styles.flex-style(column, center, stretch);

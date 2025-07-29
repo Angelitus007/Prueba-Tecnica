@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { TermsComponent } from './components/pages/terms/terms.component';
-import { MetaResolver } from '../resolvers/meta-resolver';
+import { MetaResolver } from './resolvers/meta-resolver';
 
 export const routes: Routes = [
   { path: '',

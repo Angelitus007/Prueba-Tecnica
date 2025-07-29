@@ -1,0 +1,17 @@
+.s-list-heros {
+  &__pagination {
+    nav {
+      ul {
+        padding-inline-start: 0;
+
+        .current {
+          background: var(--color-principal);
+        }
+
+        .disabled {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

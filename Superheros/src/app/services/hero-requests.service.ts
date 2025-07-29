@@ -14,6 +14,7 @@ export class HeroRequestsService {
 
   private _heroes = signal<Hero[]>([]);
   private _loading = signal<boolean>(false);
+  private _totalHeroes = signal<number>(0);
   private _originalHeroes: Hero[] = [];
 
   public getAllHeroes(): void {
@@ -23,6 +24,21 @@ export class HeroRequestsService {
       this._heroes.set(heroList);
       this._loading.set(false);
     });
+  }
+
+  public getHeroes(page: number, limit: number): void {
+    this._loading.set(true);
+    this.http.get<Hero[]>(`${this.apiURL}?_page=${page}&_limit=${limit}`, {
+      observe: 'response',
+      transferCache: { includeHeaders: ['X-Total-Count'] } // Para incluirlo en la caché
+    })
+      .subscribe(response => {
+        this._heroes.set(response.body || []);
+        this._totalHeroes.set(Number(response.headers.get('X-Total-Count')));
+        this._loading.set(false);
+
+        console.log(`Fetching heroes for page ${page} with limit ${limit}`);
+      });
   }
 
   public getNextHeroId(): string {
@@ -70,6 +86,14 @@ export class HeroRequestsService {
 
   public setHeroes(heroes: Hero[]): void {
     this._heroes.set(heroes);
+  }
+
+  public get totalHeroes(): Signal<number> {
+    return this._totalHeroes;
+  }
+
+  public setTotalHeroes(total: number): void {
+    this._totalHeroes.set(total);
   }
 
   public get loading(): Signal<boolean> {
