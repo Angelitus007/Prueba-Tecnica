@@ -9,6 +9,14 @@
       "city": "Metropolis, USA."
     },
     {
+      "id": "1",
+      "name": "Batman",
+      "superpower": "Genio detective, experto en artes marciales, tecnología avanzada",
+      "description": "El Caballero Oscuro de Gotham, lucha contra el crimen con su intelecto y gadgets.",
+      "imageURL": "http://localhost:3000/batman.png",
+      "city": "Gotham, USA."
+    },
+    {
       "id": "2",
       "name": "Wonder Woman",
       "superpower": "Fuerza divina, agilidad, resistencia y uso del lazo de la verdad",
@@ -71,6 +79,22 @@
       "description": "El mejor arquero de The Avengers y maestro táctico.",
       "imageURL": "http://localhost:3000/hawkeye.jpg",
       "city": "New York, USA."
+    },
+    {
+      "id": "10",
+      "name": "Doctor Strange",
+      "superpower": "Magia mística, manipulación dimensional, teleportación",
+      "description": "Hechicero supremo defensor de la Tierra contra amenazas mágicas.",
+      "imageURL": "http://localhost:3000/doctorstrange.png",
+      "city": "New York, USA."
+    },
+    {
+      "id": "11",
+      "name": "Black Widow",
+      "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
+      "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
+      "imageURL": "http://localhost:3000/blackwidow.jpg",
+      "city": "Moscú, RU."
     },
     {
       "id": "12",
