@@ -73,14 +73,6 @@
       "city": "New York, USA."
     },
     {
-      "id": "11",
-      "name": "Black Widow",
-      "superpower": "Experta en espionaje, artes marciales, acrobacias y puntería",
-      "description": "Agente de S.H.I.E.L.D. y espía redimida luchando por la justicia.",
-      "imageURL": "http://localhost:3000/blackwidow.jpg",
-      "city": "Moscú, RU."
-    },
-    {
       "id": "12",
       "name": "Aquaman",
       "superpower": "Respira bajo el agua, fuerza sobrehumana, telepatía marina",

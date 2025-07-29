@@ -1,68 +1,43 @@
-import { Component, computed, inject, linkedSignal, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HeroCardComponent } from "../../components/hero-card/hero-card.component";
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'section-list-heros',
   imports: [HeroCardComponent, NgxPaginationModule],
   templateUrl: './list-heros.component.html',
-  styleUrl: './list-heros.component.scss'
+  styleUrl: './list-heros.component.scss',
+  animations: [
+    trigger('heroAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('100ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ],
 })
 export class ListHerosComponent implements OnInit {
 
   private readonly _heroRequestsService = inject(HeroRequestsService);
-
-  // Para la paginación
-  protected currentPage: number = 1;
-  protected readonly itemsPerPage: number = 5;
-
-  // private _viewMore = signal<boolean>(true);
-  // private _index = signal<number>(8);
-  // private _totalHeroes = computed(() => this._heroRequestsService.heroes().length);
-
-  // private _visibleHeroes = linkedSignal({
-  //   source: () => ({allHeroes: this._heroRequestsService.heroes(),
-  //                   currIndex: this._index}),
-  //   computation: ({allHeroes, currIndex}) => {
-  //     return allHeroes.slice(0, currIndex());
-  //   }
-  // });
+  private readonly _initialPage: number = 1;
 
   public ngOnInit(): void {
-    this.loadPage(this.currentPage);
+    this.loadPage(this._initialPage);
   }
 
   protected loadPage(page: number): void {
-    this._heroRequestsService.getHeroes(page, this.itemsPerPage);
+    this._heroRequestsService.loadHeroes(page);
   }
 
   protected onPageChange(page: number): void {
-    this.currentPage = page;
     this.loadPage(page);
   }
-
-  // protected toggleHeroes(heroesToDisplay: number): void {
-  //   const totalHeroes = this._totalHeroes();
-  //   const currentIndex = this._index();
-
-  //   if (this._viewMore()) {
-  //     const nextIndex = Math.min(currentIndex + heroesToDisplay, totalHeroes);
-  //     this._index.set(nextIndex);
-
-  //     if (nextIndex >= totalHeroes) {
-  //       this._viewMore.set(false);
-  //     }
-  //   } else {
-  //     const nextIndex = Math.max(currentIndex - heroesToDisplay, 8);
-  //     this._index.set(nextIndex);
-
-  //     if (nextIndex <= 8) {
-  //       this._viewMore.set(true);
-  //     }
-  //   }
-  // }
 
   public get heroes(): Hero[] {
     return this._heroRequestsService.heroes();
@@ -72,19 +47,15 @@ export class ListHerosComponent implements OnInit {
     return this._heroRequestsService.totalHeroes();
   }
 
+  public get currentPage(): number {
+    return this._heroRequestsService.currentPage;
+  }
+
+  public get itemsPerPage(): number {
+    return this._heroRequestsService.itemsPerPage;
+  }
+
   public get isLoading(): boolean {
     return this._heroRequestsService.loading();
   }
-
-  // public get viewMore(): boolean {
-  //   return this._viewMore();
-  // }
-
-  // public get visibleHeroes(): Hero[] {
-  //   return this._visibleHeroes();
-  // }
-
-  // public get totalHeroes(): number {
-  //   return this._totalHeroes();
-  // }
 }

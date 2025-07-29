@@ -15,20 +15,26 @@ export class HeroRequestsService {
   private _heroes = signal<Hero[]>([]);
   private _loading = signal<boolean>(false);
   private _totalHeroes = signal<number>(0);
-  private _originalHeroes: Hero[] = [];
 
-  public getAllHeroes(): void {
-    this._loading.set(true);
-    this.http.get<Hero[]>(this.apiURL).subscribe(heroList => {
-      this._originalHeroes = heroList;
-      this._heroes.set(heroList);
-      this._loading.set(false);
-    });
-  }
+  private _currentFilter: string = '';
+  private readonly _currentPage = signal<number>(1);
+  private readonly _itemsPerPage: number = 5;
 
-  public getHeroes(page: number, limit: number): void {
+  public loadHeroes(page: number, filter?: string): void {
+
+    this._currentPage.set(page);
+
+    if (filter !== undefined) {
+      this._currentFilter = filter;
+    }
+
     this._loading.set(true);
-    this.http.get<Hero[]>(`${this.apiURL}?_page=${page}&_limit=${limit}`, {
+
+    const endpoint = this._currentFilter
+      ? `${this.apiURL}?name_like=${this._currentFilter}&_page=${this._currentPage()}&_limit=${this._itemsPerPage}`
+      : `${this.apiURL}?_page=${this._currentPage()}&_limit=${this._itemsPerPage}`;
+
+    this.http.get<Hero[]>(endpoint, {
       observe: 'response',
       transferCache: { includeHeaders: ['X-Total-Count'] } // Para incluirlo en la caché
     })
@@ -36,8 +42,6 @@ export class HeroRequestsService {
         this._heroes.set(response.body || []);
         this._totalHeroes.set(Number(response.headers.get('X-Total-Count')));
         this._loading.set(false);
-
-        console.log(`Fetching heroes for page ${page} with limit ${limit}`);
       });
   }
 
@@ -72,14 +76,6 @@ export class HeroRequestsService {
     });
   }
 
-  public restoreOriginalHeroes(): void {
-    this._heroes.set(this._originalHeroes);
-  }
-
-  public get originalHeroes(): Hero[] {
-    return this._originalHeroes;
-  }
-
   public get heroes(): Signal<Hero[]> {
     return this._heroes;
   }
@@ -92,8 +88,12 @@ export class HeroRequestsService {
     return this._totalHeroes;
   }
 
-  public setTotalHeroes(total: number): void {
-    this._totalHeroes.set(total);
+  public get currentPage(): number {
+    return this._currentPage();
+  }
+
+  public get itemsPerPage(): number {
+    return this._itemsPerPage;
   }
 
   public get loading(): Signal<boolean> {

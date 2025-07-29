@@ -1,9 +1,8 @@
 import { Component, inject, input, OnDestroy, OnInit } from '@angular/core';
 import { Hero } from '../../../models/hero';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
-import { AlertMsgService } from '../../../services/alert-msg.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, Subject, take, takeUntil } from 'rxjs';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'c-form-search',
@@ -45,18 +44,7 @@ export class FormSearchComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$)
       )
       .subscribe((filterValue: string) => {
-        if (!filterValue?.trim()) {
-          this._heroRequestService.restoreOriginalHeroes();
-        } else {
-          this.filterHeroes(filterValue);
-        }
+        this._heroRequestService.loadHeroes(1, filterValue || '');
       });
-  }
-
-  private filterHeroes(filterValue: string): void {
-    const filteredHeroes = this._heroRequestService.originalHeroes.filter(hero =>
-      hero.name.toLowerCase().includes(filterValue.toLowerCase())
-    );
-    this._heroRequestService.setHeroes(filteredHeroes);
   }
 }

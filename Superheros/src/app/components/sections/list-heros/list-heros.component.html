@@ -12,24 +12,12 @@
     @if (isLoading) {
       <p class="s-list-heros__loading">Cargando héroes...</p>
     } @else {
-      @for (h of heroes | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalHeroes}; track h) {
-        <c-hero-card [hero]="h" />
+      @for (h of heroes | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalHeroes}; track h.id) {
+        <c-hero-card [hero]="h" @heroAnimation />
       } @empty {
         <p class="s-list-heros__empty">No hay héroes disponibles en este momento.</p>
       }
     }
-
-    <!-- @if (totalHeroes > 8) {
-      <button class="s-list-heros__view-more" #interactionElement
-              (click)="toggleHeroes(4)">{{ viewMore ? 'Ver más' : 'Ver menos' }}</button>
-
-      @defer (on interaction(interactionElement)) {
-
-        No lo he conseguido.
-        La idea era que al hacer click en el botón "Ver más" se cargaran más héroes de forma diferida.
-
-      }
-    } -->
   </div>
 
   <pagination-controls class="s-list-heros__pagination" (pageChange)="onPageChange($event)"></pagination-controls>
