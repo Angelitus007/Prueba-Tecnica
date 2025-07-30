@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "json-server db.json --static ./assets --middlewares ./expose-headers.js"
+    "start": "json-server db.json --static ./assets --middlewares ./expose-headers.js",
+    "start-auth": "json-server db.json --static ./assets -m ./node_modules/json-server-auth --middlewares ./expose-headers.js -r rules.json"
   },
   "dependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
+    "jsonwebtoken": "^9.0.2"
   }
 }
