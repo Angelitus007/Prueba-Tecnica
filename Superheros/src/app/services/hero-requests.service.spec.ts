@@ -12,7 +12,7 @@ describe('HeroRequestsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideHttpClient(withFetch()),
-                  provideHttpClientTesting()
+      provideHttpClientTesting()
       ]
     });
     service = TestBed.inject(HeroRequestsService);
@@ -28,24 +28,50 @@ describe('HeroRequestsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Debería obtener todos los héroes y actualizar el Signal', () => {
+  it('Debería cargar los héroes para una página y actualizar el Signal', () => {
     // GIVEN
+    let page: number = 1;
     const mockHeroes: Hero[] = [
       { id: '1', name: 'Superman', superpower: 'Flight', description: 'Man of Steel', imageURL: 'superman.jpg', city: 'Metropolis' },
-      { id: '2', name: 'Batman', superpower: 'Intelligence', description: 'Dark Knight', imageURL: 'batman.jpg', city: 'Gotham' }
+      { id: '2', name: 'Batman', superpower: 'Intelligence', description: 'Dark Knight', imageURL: 'batman.jpg', city: 'Gotham' },
+      { id: '3', name: 'Wonder Woman', superpower: 'Strength', description: 'Amazon Princess', imageURL: 'wonderwoman.jpg', city: 'Themyscira' },
+      { id: '4', name: 'Aquaman', superpower: 'Water Control', description: 'King of Atlantis', imageURL: 'aquaman.jpg', city: 'Atlantis' },
+      { id: '5', name: 'Green Lantern', superpower: 'Power Ring', description: 'Protector of the Universe', imageURL: 'greenlantern.jpg', city: 'Coast City' }
     ];
 
     // WHEN
-    service.getAllHeroes();
+    service.loadHeroes(page);
 
-    const req = httpTesting.expectOne('http://localhost:3000/superheros');
+    const req = httpTesting.expectOne('http://localhost:3000/superheros?_page=1&_limit=5');
     expect(req.request.method).toBe('GET');
     req.flush(mockHeroes); // Simulamos la respuesta exitosa del backend/del servidor con el mock
 
     // THEN
     expect(service.heroes()).toEqual(mockHeroes);
-    expect(service.originalHeroes).toEqual(mockHeroes);
     expect(service.loading()).toBe(false);
+  });
+
+  it('Debería poder buscar héroes por similitud en el nombre y actualizar el Signal', () => {
+    // GIVEN
+    let page: number = 1;
+    let filter: string = 'man';
+    const mockHeroes: Hero[] = [
+      { id: '1', name: 'Superman', superpower: 'Flight', description: 'Man of Steel', imageURL: 'superman.jpg', city: 'Metropolis' },
+      { id: '2', name: 'Batman', superpower: 'Intelligence', description: 'Dark Knight', imageURL: 'batman.jpg', city: 'Gotham' },
+      { id: '3', name: 'Wonder Woman', superpower: 'Strength', description: 'Amazon Princess', imageURL: 'wonderwoman.jpg', city: 'Themyscira' }
+    ];
+
+    // WHEN
+    service.loadHeroes(page, filter);
+
+    const req = httpTesting.expectOne('http://localhost:3000/superheros?name_like=man&_page=1&_limit=5');
+    expect(req.request.method).toBe('GET');
+    req.flush(mockHeroes); // Simulamos la respuesta exitosa del backend/del servidor con el mock
+
+    // THEN
+    expect(service.heroes()).toEqual(mockHeroes);
+    expect(service.loading()).toBe(false);
+
   });
 
   it('Debería obtener el ID del siguiente héroe correctamente', () => {

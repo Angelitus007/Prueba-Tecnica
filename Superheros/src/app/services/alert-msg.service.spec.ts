@@ -21,12 +21,12 @@ describe('AlertMsgService', () => {
     const alertMessage = 'This is a test alert';
 
     // WHEN
+    const alertPromise = firstValueFrom(service.alert$);
     service.showAlert(alertType, alertMessage);
 
     // THEN
-    const alertPromise = await firstValueFrom(service.alert$);
     const expectedAlert: Alert = { type: alertType, message: alertMessage };
-    expect(alertPromise).toEqual(expectedAlert);
+    expect(await alertPromise).toEqual(expectedAlert);
   });
 
 });
