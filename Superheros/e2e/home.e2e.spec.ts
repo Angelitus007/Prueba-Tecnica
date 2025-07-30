@@ -158,5 +158,17 @@ test.describe('Page Home - Tests E2E', () => {
   });
 
   // Pendiente el test de paginación:
+  test.only('Debería poder navegar entre páginas de héroes', async ({ page }) => {
+    await page.getByText('page 2').click();
+    await page.getByText('page 3').click();
+    await page.getByText('Previous page').click();
+    await page.getByText('Next page').click();
+
+    await page.getByText('page 4').click();
+     await expect(page.locator('span[aria-disabled="true"]:has-text("Next page")')).toHaveAttribute('aria-disabled', 'true');
+
+    await page.getByText('page 1').click();
+    await expect(page.locator('span[aria-disabled="true"]:has-text("Previous page")')).toHaveAttribute('aria-disabled', 'true');
+  });
 
 });
