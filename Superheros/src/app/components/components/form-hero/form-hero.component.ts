@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit } from '@angular/core';
-import { formTypes } from '../../../shared/formTypes';
+import { formTypes } from '../../../constants/formTypes';
 import { Hero } from '../../../models/hero';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { AlertMsgService } from '../../../services/alert-msg.service';
@@ -12,7 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './form-hero.component.html',
   styleUrl: './form-hero.component.scss'
 })
-export class FormHeroComponent implements OnInit{
+export class FormHeroComponent implements OnInit {
 
   protected formTypesEnum = formTypes;
   public readonly formToShow = input<formTypes>();
@@ -59,12 +59,12 @@ export class FormHeroComponent implements OnInit{
   }
 
   protected onSubmit(): void {
-    if(this.formToShow() === formTypes.createHero) {
-        this._heroRequestService.createHero(this.heroConstruction());
-        this._alertMsgService.showAlert('success', 'Héroe creado con éxito');
+    if (this.formToShow() === formTypes.createHero) {
+      this._heroRequestService.createHero(this.heroConstruction());
+      this._alertMsgService.showAlert('success', 'Héroe creado con éxito');
     } else {
-        this._heroRequestService.updateHero(this.heroUpdate());
-        this._alertMsgService.showAlert('success', 'Héroe modificado con éxito');
+      this._heroRequestService.updateHero(this.heroUpdate());
+      this._alertMsgService.showAlert('success', 'Héroe modificado con éxito');
     }
     this.form.reset();
     this._dialogRef.close();

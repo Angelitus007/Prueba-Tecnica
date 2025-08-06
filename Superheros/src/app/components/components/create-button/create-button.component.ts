@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Dialogs } from '../../../shared/dialogTypes';
+import { Dialogs } from '../../../constants/dialogTypes';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({

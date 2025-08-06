@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "json-server db.json --static ./assets --middlewares ./expose-headers.js",
-    "start-auth": "json-server db.json --static ./assets -m ./node_modules/json-server-auth --middlewares ./expose-headers.js -r rules.json"
+    "start": "json-server db.json --static ./assets --middlewares ./expose-headers.js"
   },
   "dependencies": {
     "json-server": "^0.17.4",
