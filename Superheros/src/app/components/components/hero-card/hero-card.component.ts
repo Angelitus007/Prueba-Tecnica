@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core
 import { Hero } from '../../../models/hero';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-import { Dialogs } from '../../../constants/dialogTypes';
+import { Dialogs } from '../../../constants/dialogs';
 
 @Component({
   selector: 'c-hero-card',
@@ -27,7 +27,7 @@ export class HeroCardComponent {
 
         data: {
           hero: hero,
-          dialogToShow: Dialogs.DeleteHero,
+          dialogToShow: Dialogs.deleteHero,
         }
       });
     }
@@ -42,7 +42,7 @@ export class HeroCardComponent {
 
         data: {
           hero: hero,
-          dialogToShow: Dialogs.UpdateHero,
+          dialogToShow: Dialogs.updateHero,
         }
       });
     }

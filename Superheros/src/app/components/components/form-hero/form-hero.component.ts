@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit } from '@angular/core';
-import { formTypes } from '../../../constants/formTypes';
+import { FormType, formTypes } from '../../../constants/forms';
 import { Hero } from '../../../models/hero';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { AlertMsgService } from '../../../services/alert-msg.service';
@@ -15,7 +15,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class FormHeroComponent implements OnInit {
 
   protected formTypesEnum = formTypes;
-  public readonly formToShow = input<formTypes>();
+  public readonly formToShow = input<FormType>();
   public readonly heroDataFromDialog = input<Hero>();
   private readonly _dialogRef = inject(MatDialogRef<FormHeroComponent>);
 

@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Dialogs } from '../../../constants/dialogTypes';
+import { Dialogs, DialogType } from '../../../constants/dialogs';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
 import { Hero } from '../../../models/hero';
-import { formTypes } from '../../../constants/formTypes';
+import { formTypes } from '../../../constants/forms';
 import { AlertMsgService } from '../../../services/alert-msg.service';
 import { FormHeroComponent } from "../form-hero/form-hero.component";
 
@@ -17,7 +17,7 @@ import { FormHeroComponent } from "../form-hero/form-hero.component";
 export class DialogComponent implements OnInit {
 
   protected dialogEnum = Dialogs;
-  protected dialogToShow!: Dialogs;
+  protected dialogToShow!: DialogType;
 
   protected formTypesEnum = formTypes;
   protected hero!: Hero;

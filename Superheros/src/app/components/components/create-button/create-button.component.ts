@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Dialogs } from '../../../constants/dialogTypes';
+import { Dialogs } from '../../../constants/dialogs';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -19,7 +19,7 @@ export class CreateButtonComponent {
       position: { top: '5%' },
 
       data: {
-        dialogToShow: Dialogs.CreateHero,
+        dialogToShow: Dialogs.createHero,
       }
     });
   }
