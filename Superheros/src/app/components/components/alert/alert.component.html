@@ -1,14 +1,18 @@
-@if (isDisplayed()) {
-<div class="c-alert" [class]="alert?.type">
+@if (alertState()?.isDisplayed) {
+<div class="c-alert" [class]="alertState()?.alert?.type">
   <span class="c-alert__message">
     <img
       class="c-alert__img"
       [src]="
-        alert?.type === 'success' ? 'assets/success.svg' : 'assets/error.svg'
+        alertState()?.alert?.type === 'success'
+          ? 'assets/success.svg'
+          : 'assets/error.svg'
       "
-      [alt]="alert?.type === 'success' ? 'Success Icon' : 'Error Icon'"
+      [alt]="
+        alertState()?.alert?.type === 'success' ? 'Success Icon' : 'Error Icon'
+      "
     />
-    {{ alert?.message }}
+    {{ alertState()?.alert?.message }}
   </span>
 </div>
 }
