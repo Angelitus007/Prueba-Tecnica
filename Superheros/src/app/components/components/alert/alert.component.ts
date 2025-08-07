@@ -1,29 +1,54 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { AlertMsgService } from '../../../services/alert-msg.service';
-import { CommonModule } from '@angular/common';
 import { Alert } from '../../../models/alert';
+import { switchMap, of, tap, delay, finalize, Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-alert',
-  imports: [CommonModule],
+  selector: 'alert',
+  imports: [],
   templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss'
+  styleUrl: './alert.component.scss',
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent implements OnInit, OnDestroy {
 
   protected isDisplayed = signal<boolean>(false);
-  private readonly _alertService = inject(AlertMsgService);
-  alert: Alert | null = null;
+  private readonly alertService = inject(AlertMsgService);
+  private readonly destroy$ = new Subject<void>();
+  alert?: Alert;
 
   public ngOnInit(): void {
-    this._alertService.alert$.subscribe((alert: Alert) => {
-      this.alert = alert;
-      this.isDisplayed.set(true);
+    this.alertService.alert$()
+      .pipe(
+        takeUntil(this.destroy$),
 
-      setTimeout(() => {
-        this.isDisplayed.set(false);
-        this.alert = null;
-      }, 3000);
-    });
+        switchMap((alert: Alert) =>
+          of(alert).pipe(
+            tap((alert) => {
+              this.activateAlert(alert);
+            }),
+            delay(3000),
+            finalize(() => {
+              this.deactivateAlert();
+            })
+          )
+        )
+      )
+      .subscribe();
   }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private activateAlert(alertData: Alert): void {
+    this.alert = alertData;
+    this.isDisplayed.set(true);
+  }
+
+  private deactivateAlert(): void {
+    this.isDisplayed.set(false);
+    this.alert = undefined;
+  }
+
 }

@@ -40,7 +40,7 @@ export class DialogComponent implements OnInit {
   protected deleteHero(): void {
     if (this.hero.id !== undefined) {
       this._heroRequestsService.deleteHero(this.hero.id);
-      this._alertMsgService.showAlert('success', 'Este héroe se ha eliminado');
+      this._alertMsgService.showAlert({ type: 'success', message: 'Este héroe se ha eliminado'});
     }
   }
 }

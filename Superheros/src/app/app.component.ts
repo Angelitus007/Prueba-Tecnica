@@ -9,5 +9,4 @@ import { AlertComponent } from "./components/components/alert/alert.component";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Superheros';
 }

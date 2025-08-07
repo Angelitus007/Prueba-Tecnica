@@ -61,10 +61,10 @@ export class FormHeroComponent implements OnInit {
   protected onSubmit(): void {
     if (this.formToShow() === formTypes.createHero) {
       this._heroRequestService.createHero(this.heroConstruction());
-      this._alertMsgService.showAlert('success', 'Héroe creado con éxito');
+      this._alertMsgService.showAlert({ type: 'success', message: 'Héroe creado con éxito' });
     } else {
       this._heroRequestService.updateHero(this.heroUpdate());
-      this._alertMsgService.showAlert('success', 'Héroe modificado con éxito');
+      this._alertMsgService.showAlert({ type: 'success', message: 'Héroe modificado con éxito' });
     }
     this.form.reset();
     this._dialogRef.close();

@@ -1,12 +1,14 @@
 @if (isDisplayed()) {
-  <div class="c-alert" [ngClass]="alert?.type">
-    <span class="c-alert__message">
-      <img
-        class="c-alert__img"
-        [src]="alert?.type === 'success' ? 'assets/success.svg' : 'assets/error.svg'"
-        [alt]="alert?.type === 'success' ? 'Success Icon' : 'Error Icon'"
-      />
-      {{ alert?.message }}
-    </span>
-  </div>
+<div class="c-alert" [class]="alert?.type">
+  <span class="c-alert__message">
+    <img
+      class="c-alert__img"
+      [src]="
+        alert?.type === 'success' ? 'assets/success.svg' : 'assets/error.svg'
+      "
+      [alt]="alert?.type === 'success' ? 'Success Icon' : 'Error Icon'"
+    />
+    {{ alert?.message }}
+  </span>
+</div>
 }
