@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { Hero } from '../../../models/hero';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { Dialogs } from '../../../constants/dialogs';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
+import { Hero } from '@models/hero';
 
 @Component({
   selector: 'c-hero-card',
@@ -12,40 +14,15 @@ import { Dialogs } from '../../../constants/dialogs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroCardComponent {
+  public hero = input<Hero>();
+  public openDeleteDialog = output<string>();
+  public openUpdateDialog = output<Hero>();
 
-  public readonly hero = input<Hero>();
-
-  private readonly dialog = inject(MatDialog);
-
-  protected deleteHero(): void {
-    const hero = this.hero();
-    if (hero) {
-      this.dialog.open(DialogComponent, {
-        width: '43.9375rem',
-        height: '16.6875rem',
-        position: { top: '5%' },
-
-        data: {
-          hero: hero,
-          dialogToShow: Dialogs.deleteHero,
-        }
-      });
-    }
+  protected onDeleteClick(): void {
+    this.openDeleteDialog.emit(this.hero()!.id);
   }
 
-  protected updateHero(): void {
-    const hero = this.hero();
-    if (hero) {
-      this.dialog.open(DialogComponent, {
-        width: '75rem',
-        position: { top: '5%' },
-
-        data: {
-          hero: hero,
-          dialogToShow: Dialogs.updateHero,
-        }
-      });
-    }
+  protected onUpdateClick(): void {
+    this.openUpdateDialog.emit(this.hero()!);
   }
-
 }

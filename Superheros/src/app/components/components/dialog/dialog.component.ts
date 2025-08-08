@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, } from '@angular/material/dialog';
+import { Component, inject, input, OnInit } from '@angular/core';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle, } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Dialogs, DialogType } from '../../../constants/dialogs';
 import { HeroRequestsService } from '../../../services/hero-requests.service';
@@ -7,6 +7,7 @@ import { Hero } from '../../../models/hero';
 import { formTypes } from '../../../constants/forms';
 import { AlertMsgService } from '../../../services/alert-msg.service';
 import { FormHeroComponent } from "../form-hero/form-hero.component";
+import { DialogConfig } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'c-dialog',
@@ -15,6 +16,8 @@ import { FormHeroComponent } from "../form-hero/form-hero.component";
   styleUrl: './dialog.component.scss'
 })
 export class DialogComponent implements OnInit {
+
+  public dialogConfig = input<DialogConfig>();
 
   protected dialogEnum = Dialogs;
   protected dialogToShow!: DialogType;

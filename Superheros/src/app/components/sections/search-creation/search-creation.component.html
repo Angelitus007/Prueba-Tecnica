@@ -1,4 +1,11 @@
 <section class="s-search-creation">
-  <c-form-search class="s-search-creation__form"/>
-  <c-create-button class="s-search-creation__button"/>
+  <c-search-input
+    class="s-search-creation__input"
+    [filter]="filter()"
+    (filterChange)="onFilterChanged($event)"
+  />
+  <c-create-button
+    class="s-search-creation__button"
+    (buttonClicked)="onCreateHero()"
+  />
 </section>
