@@ -1,9 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AlertComponent } from '@components/components/alert/alert.component';
 import { DialogComponent } from '@components/components/dialog/dialog.component';
 import { Dialogs } from '@constants/dialogs';
 import { Alert, AlertState } from '@models/alert';
+import { DialogData } from '@models/dialog-data';
+import { Hero } from '@models/hero';
+import { PaginationConfig } from '@models/pagination-config';
 import { AlertMsgService } from '@services/alert-msg.service';
 import { HeroRequestsService } from '@services/hero-requests.service';
 import {
@@ -19,9 +22,6 @@ import {
 } from 'rxjs';
 import { ListHeroesComponent } from '../../sections/list-heroes/list-heroes.component';
 import { SearchCreationComponent } from '../../sections/search-creation/search-creation.component';
-import { PaginationConfig } from '@models/pagination-config';
-import { Hero } from '@models/hero';
-import { DialogData } from '@models/dialog-data';
 
 @Component({
   selector: 'app-home',

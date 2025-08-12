@@ -1,9 +1,9 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, input, output } from '@angular/core';
-import { HeroCardComponent } from '../../components/hero-card/hero-card.component';
 import { Hero } from '@models/hero';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { PaginationConfig } from '@models/pagination-config';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HeroCardComponent } from '../../components/hero-card/hero-card.component';
 
 @Component({
   selector: 'section-list-heroes',

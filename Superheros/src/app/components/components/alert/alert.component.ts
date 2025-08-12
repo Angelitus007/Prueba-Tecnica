@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { AlertState } from '../../../models/alert';
+import { AlertState } from '@models/alert';
 
 @Component({
   selector: 'alert',

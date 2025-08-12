@@ -9,8 +9,8 @@ import {
 } from '@angular/material/dialog';
 import { Dialogs } from '@constants/dialogs';
 import { DialogData } from '@models/dialog-data';
-import { Hero } from '../../../models/hero';
-import { FormHeroComponent } from '../form-hero/form-hero.component';
+import { Hero } from '@models/hero';
+import { FormHeroComponent } from '@components/components/form-hero/form-hero.component';
 import { Forms } from '@constants/forms';
 
 @Component({

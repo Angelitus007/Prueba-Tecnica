@@ -1,12 +1,12 @@
 import { Component, inject, input, OnInit, output } from '@angular/core';
-import { Forms, FormType } from '../../../constants/forms';
-import { Hero } from '../../../models/hero';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Forms, FormType } from '@constants/forms';
+import { Hero } from '@models/hero';
 
 @Component({
   selector: 'c-form-hero',
