@@ -13,4 +13,8 @@ export class SearchInputComponent {
   onFilterChange(event: Event): void {
     this.filterChange.emit((event.target as HTMLInputElement).value);
   }
+
+  onEnter(event: Event): void {
+    (event.target as HTMLInputElement).blur();
+  }
 }

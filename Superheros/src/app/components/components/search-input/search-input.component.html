@@ -3,5 +3,6 @@
   type="text"
   [value]="filter()"
   (input)="onFilterChange($event)"
+  (keydown.enter)="onEnter($event)"
   placeholder="Busca un héroe"
 />

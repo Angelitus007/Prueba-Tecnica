@@ -14,7 +14,7 @@
   "superheros": [
     {
       "id": "0",
-      "name": "Superma",
+      "name": "Superman",
       "superpower": "Súper fuerza, vuelo, visión láser, invulnerabilidad",
       "description": "El Hombre de Acero, protector de Metrópolis, originario del planeta Krypton.",
       "photo": "http://localhost:3000/superman.jpg",
