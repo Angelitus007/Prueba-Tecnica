@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { Hero } from '../models/hero';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Hero } from '../models/hero';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class HeroRequestsService {
   private readonly apiURL = 'http://localhost:3000/superheros';
   private readonly http = inject(HttpClient);
 
-  public loadHeroes(page: number, filter?: string): Observable<any> {
+  public loadHeroes(page: number, filter?: string): Observable<HttpResponse<Hero[]>> {
     const endpoint = filter
       ? `${this.apiURL}?name_like=${filter}&_page=${page}&_limit=5`
       : `${this.apiURL}?_page=${page}&_limit=5`;

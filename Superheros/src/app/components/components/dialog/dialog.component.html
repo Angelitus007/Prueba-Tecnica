@@ -6,9 +6,9 @@
     </button>
   </mat-dialog-actions>
 
-  @switch (dialogToShow) {
+  @switch (dialogData.dialog) {
 
-    @case (dialogEnum.deleteHero) {
+    @case (dialog.deleteHero) {
     <h2 mat-dialog-title class="c-dialog__header">Eliminar héroe</h2>
 
     <mat-dialog-content class="c-dialog__content">
@@ -21,23 +21,25 @@
 
     <mat-dialog-actions class="c-dialog__buttons">
       <button class="c-dialog__buttons--cancel" mat-dialog-close>Cancelar</button>
-      <button class="c-dialog__buttons--delete" (click)="deleteHero()" mat-dialog-close>Si, eliminar</button>
+      <button class="c-dialog__buttons--delete" (click)="onDeleteHero()" mat-dialog-close>Si, eliminar</button>
     </mat-dialog-actions>
     }
 
-    @case (dialogEnum.createHero) {
+    @case (dialog.createHero) {
     <h2 mat-dialog-title class="c-dialog__header">Crear nuevo héroe</h2>
 
     <mat-dialog-content>
-      <c-form-hero [formToShow]="formTypesEnum.createHero" />
+      <c-form-hero [formDisplay]="form.createHero"
+      (createHero)="onCreateHero($event)"/>
     </mat-dialog-content>
     }
 
-    @case (dialogEnum.updateHero) {
+    @case (dialog.updateHero) {
     <h2 mat-dialog-title class="c-dialog__header">Editar héroe</h2>
 
     <mat-dialog-content>
-      <c-form-hero [formToShow]="formTypesEnum.updateHero" [heroDataFromDialog]="hero"/>
+      <c-form-hero [formDisplay]="form.updateHero" [heroData]="dialogData.hero"
+      (updateHero)="onUpdateHero($event)"/>
     </mat-dialog-content>
     }
   }

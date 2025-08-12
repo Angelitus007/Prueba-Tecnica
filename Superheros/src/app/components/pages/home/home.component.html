@@ -5,15 +5,15 @@
     class="p-home__search-creation"
     [filter]="filter"
     (filterChange)="onFilterChanged($event)"
-    (createHeroClicked)="openDialog(createDialogConfig)"
-
+    (createHeroClicked)="openCreateDialog()"
   />
-  <section-list-heroes class="p-home__list-heros"
+  <section-list-heroes
+    class="p-home__list-heros"
     [heroes]="heroes()"
     [isLoading]="isLoading()"
-    [paginationConfig]="paginationConfig"
+    [paginationConfig]="paginationConfigGetter"
     (pageChange)="onPageChange($event)"
-    (deleteHero)="openDialog(deleteDialogConfig)"
-    (updateHero)="openDialog(updateDialogConfig)"
+    (deleteHero)="openDeleteDialog($event)"
+    (updateHero)="openUpdateDialog($event)"
   />
 </div>

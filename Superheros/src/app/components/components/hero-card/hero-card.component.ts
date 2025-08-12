@@ -11,7 +11,6 @@ import { Hero } from '@models/hero';
   imports: [],
   templateUrl: './hero-card.component.html',
   styleUrl: './hero-card.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroCardComponent {
   public hero = input<Hero>();

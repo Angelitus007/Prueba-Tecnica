@@ -1,10 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertComponent } from '@components/components/alert/alert.component';
 import { DialogComponent } from '@components/components/dialog/dialog.component';
 import { Dialogs } from '@constants/dialogs';
 import { Alert, AlertState } from '@models/alert';
-import { DialogConfig } from '@models/dialog-config';
 import { AlertMsgService } from '@services/alert-msg.service';
 import { HeroRequestsService } from '@services/hero-requests.service';
 import {
@@ -22,6 +21,7 @@ import { ListHeroesComponent } from '../../sections/list-heroes/list-heroes.comp
 import { SearchCreationComponent } from '../../sections/search-creation/search-creation.component';
 import { PaginationConfig } from '@models/pagination-config';
 import { Hero } from '@models/hero';
+import { DialogData } from '@models/dialog-data';
 
 @Component({
   selector: 'app-home',
@@ -41,32 +41,19 @@ export class HomeComponent {
 
   private readonly dialog = inject(MatDialog);
 
-  protected createDialogConfig: DialogConfig = {
-    dialogToShow: Dialogs.createHero,
-  };
-
-  protected updateDialogConfig: DialogConfig = {
-    dialogToShow: Dialogs.updateHero,
-  };
-
-  protected deleteDialogConfig: DialogConfig = {
-    dialogToShow: Dialogs.deleteHero,
-  };
-
   public heroes = signal<Hero[]>([]);
   public isLoading = signal<boolean>(false);
   public totalHeroes = signal<number>(0);
   public currentPage = signal<number>(1);
 
+  private readonly initialPage: number = 1;
   protected paginationConfig: PaginationConfig = {
     itemsPerPage: 5,
     currentPage: this.currentPage(),
     totalItems: this.totalHeroes(),
   };
 
-  public currentFilter: string = '';
-
-  private readonly initialPage: number = 1;
+  private readonly alertMsgService = inject(AlertMsgService);
 
   public ngOnInit(): void {
     this.initializeAlert();
@@ -112,7 +99,7 @@ export class HomeComponent {
       .pipe(debounceTime(500), distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe((filterValue: string) => {
         this.filter = filterValue;
-        this.heroRequestsService.loadHeroes(1, filterValue || '');
+        this.loadPage(this.initialPage);
       });
   }
 
@@ -120,12 +107,43 @@ export class HomeComponent {
     this.filterSubject.next(filterValue);
   }
 
-  protected openDialog(dialogInfo: DialogConfig) {
-    this.dialog.open(DialogComponent, {
-      width: dialogInfo.dialogToShow === Dialogs.deleteHero ? '44rem' : '75rem',
+  protected openDialog(dialogData: DialogData): void {
+    const ref = this.dialog.open(DialogComponent, {
+      width: dialogData.dialog === Dialogs.deleteHero ? '44rem' : '75rem',
       position: { top: '5%' },
-      data: dialogInfo,
+      data: dialogData,
     });
+
+    const outputHandlers = {
+      [Dialogs.createHero]: () =>
+        ref.componentInstance.createHero.subscribe((hero: Omit<Hero, 'id'>) => {
+          const newHero: Hero = {
+            ...hero,
+            id: this.getNextHeroId(),
+          };
+          this.createHero(newHero);
+        }),
+      [Dialogs.updateHero]: () =>
+        ref.componentInstance.updateHero.subscribe((hero: Hero) => {
+          this.updateHero(hero) }
+        ),
+      [Dialogs.deleteHero]: () =>
+        ref.componentInstance.deleteHero.subscribe((id: string) =>
+          this.deleteHero(id)
+        ),
+    } as const;
+
+    outputHandlers[dialogData.dialog]();
+  }
+
+  protected openCreateDialog(): void {
+    this.openDialog({ dialog: Dialogs.createHero });
+  }
+  protected openUpdateDialog(hero: Hero): void {
+    this.openDialog({ dialog: Dialogs.updateHero, hero });
+  }
+  protected openDeleteDialog(heroID: string): void {
+    this.openDialog({ dialog: Dialogs.deleteHero, heroID });
   }
 
   protected onPageChange(page: number): void {
@@ -133,71 +151,101 @@ export class HomeComponent {
   }
 
   protected loadPage(page: number): void {
-    this.isLoading.set(true);
-
-    this.currentPage.set(page);
-
-    if (this.filter !== undefined) {
-      this.currentFilter = this.filter;
-    }
-
-    this.heroRequestsService.loadHeroes(page, this.filter).subscribe({
-      next: (response) => {
-        this.heroes.set(response.body || []);
-        this.totalHeroes.set(Number(response.headers.get('X-Total-Count')));
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.isLoading.set(false);
-        console.error('Error loading heroes');
-      },
-    });
+    this.heroRequestsService
+      .loadHeroes(page, this.filter)
+      .pipe(
+        tap(() => {
+          this.isLoading.set(true);
+          this.currentPage.set(page);
+        }),
+        finalize(() => {
+          this.isLoading.set(false);
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          this.heroes.set(response.body || []);
+          this.totalHeroes.set(Number(response.headers.get('X-Total-Count')));
+        },
+        error: () => {
+          this.alertMsgService.showAlert({
+            type: 'error',
+            message: 'Error al cargar los héroes',
+          });
+        },
+      });
   }
 
   protected createHero(hero: Hero): void {
     this.heroRequestsService.createHero(hero).subscribe({
       next: (newHero) => {
         this.heroes.update((currentHeroes) => [...currentHeroes, newHero]);
+        this.alertMsgService.showAlert({
+          type: 'success',
+          message: 'Héroe creado con éxito',
+        });
       },
       error: () => {
-        console.error('Error creating hero');
+        this.alertMsgService.showAlert({
+          type: 'error',
+          message: 'Error al crear el héroe',
+        });
       },
     });
   }
 
   protected updateHero(hero: Hero): void {
-    this.heroRequestsService.updateHero(hero).subscribe({
+    this.heroRequestsService.updateHero(hero)
+    .subscribe({
       next: (updatedHero) => {
         this.heroes.update((currentHeroes) =>
           currentHeroes.map((h) => (h.id === updatedHero.id ? updatedHero : h))
         );
+        this.alertMsgService.showAlert({
+          type: 'success',
+          message: 'Héroe modificado con éxito',
+        });
       },
       error: () => {
-        console.error('Error updating hero');
+        this.alertMsgService.showAlert({
+          type: 'error',
+          message: 'Error al modificar el héroe',
+        });
       },
     });
   }
 
   public getNextHeroId(): string {
-    if (this.heroes().length === 0) {
-      return '0';
-    }
-    const maxId: number = Math.max(
-      ...this.heroes().map((hero) => Number(hero.id))
-    );
-    return (maxId + 1).toString();
+    return Math.random().toString(36).substr(2, 9);
   }
 
   protected deleteHero(id: string): void {
-    this.heroRequestsService.deleteHero(id).subscribe({
+    this.heroRequestsService.deleteHero(id)
+    .subscribe({
       next: () => {
         this.heroes.update((currentHeroes) =>
           currentHeroes.filter((hero) => hero.id !== id)
         );
+
+        this.alertMsgService.showAlert({
+          type: 'success',
+          message: 'Este héroe se ha eliminado',
+        });
       },
       error: () => {
-        console.error('Error deleting hero');
+        this.alertMsgService.showAlert({
+          type: 'error',
+          message: 'Error al eliminar el héroe',
+        });
       },
     });
   }
+
+  public get paginationConfigGetter(): PaginationConfig {
+  return {
+    itemsPerPage: 5,
+    currentPage: this.currentPage(),
+    totalItems: this.totalHeroes(),
+  };
+}
 }

@@ -3,6 +3,6 @@ export interface Hero {
   name: string,
   superpower: string,
   description: string,
-  imageURL: string,
+  photo: string,
   city: string
 }

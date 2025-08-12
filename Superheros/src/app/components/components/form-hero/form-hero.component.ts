@@ -1,99 +1,81 @@
-import { Component, inject, input, OnInit } from '@angular/core';
-import { FormType, formTypes } from '../../../constants/forms';
+import { Component, inject, input, OnInit, output } from '@angular/core';
+import { Forms, FormType } from '../../../constants/forms';
 import { Hero } from '../../../models/hero';
-import { HeroRequestsService } from '../../../services/hero-requests.service';
-import { AlertMsgService } from '../../../services/alert-msg.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'c-form-hero',
   imports: [ReactiveFormsModule],
   templateUrl: './form-hero.component.html',
-  styleUrl: './form-hero.component.scss'
+  styleUrl: './form-hero.component.scss',
 })
 export class FormHeroComponent implements OnInit {
+  protected formType = Forms;
+  public formDisplay = input.required<FormType>();
+  public heroData = input<Hero>();
 
-  protected formTypesEnum = formTypes;
-  public readonly formToShow = input<FormType>();
-  public readonly heroDataFromDialog = input<Hero>();
-  private readonly _dialogRef = inject(MatDialogRef<FormHeroComponent>);
+  private readonly fb = inject(FormBuilder);
 
-  private readonly _heroRequestService = inject(HeroRequestsService);
-  private readonly _alertMsgService = inject(AlertMsgService);
-  private readonly _fb = inject(FormBuilder);
+  public createHero = output<Omit<Hero, 'id'>>();
+  public updateHero = output<Hero>();
 
   protected form!: FormGroup;
-  private _selectedFile: File | null = null;
+  public selectedFile?: string;
 
   ngOnInit(): void {
-    this.inicializarForm();
-    this.rellenarUpdateForm();
+    this.initializeForm();
   }
 
-  private inicializarForm(): void {
-    this.form = this._fb.group({
+  private initializeForm(): void {
+    this.form = this.fb.group({
       name: ['', [Validators.required]],
       superpower: ['', [Validators.required]],
       city: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      photo: [null, [Validators.required]],
-      terms: [false, [Validators.requiredTrue]]
+      photo: [null],
+      terms: [false, [Validators.requiredTrue]],
+    });
+
+    if (this.formDisplay() === this.formType.updateHero) {
+      this.fillFormWithHeroData();
+    } else {
+      this.form.get('photo')?.setValidators([Validators.required]);
+    }
+  }
+
+  private fillFormWithHeroData(): void {
+    this.form.patchValue({
+      ...this.heroData(),
+      photo: undefined,
     });
   }
 
-  private rellenarUpdateForm(): void {
-    if (this.formToShow() === formTypes.updateHero) {
-      const heroData = this.heroDataFromDialog();
-
-      if (heroData) {
-        this.form.patchValue({
-          name: heroData.name,
-          superpower: heroData.superpower,
-          city: heroData.city,
-          description: heroData.description,
-          photo: heroData.imageURL,
-        });
-      }
-    }
-  }
-
   protected onSubmit(): void {
-    if (this.formToShow() === formTypes.createHero) {
-      this._heroRequestService.createHero(this.heroConstruction());
-      this._alertMsgService.showAlert({ type: 'success', message: 'Héroe creado con éxito' });
+    if (this.formDisplay() === this.formType.createHero) {
+      this.createHero.emit({
+        ...this.form.value,
+        photo: this.selectedFile,
+        terms: false,
+      });
     } else {
-      this._heroRequestService.updateHero(this.heroUpdate());
-      this._alertMsgService.showAlert({ type: 'success', message: 'Héroe modificado con éxito' });
+      this.updateHero.emit({
+        ...this.form.value,
+        id: this.heroData()?.id,
+        photo: this.selectedFile || this.heroData()?.photo,
+        terms: false,
+      });
     }
-    this.form.reset();
-    this._dialogRef.close();
-  }
-
-  private heroConstruction(): Hero {
-    const formValues = this.form.value;
-    return {
-      id: this._heroRequestService.getNextHeroId(),
-      imageURL: formValues.photo,
-      ...formValues,
-    } as Hero;
-  }
-
-  private heroUpdate(): Hero {
-    const formValues = this.form.value;
-    return {
-      id: this.heroDataFromDialog()?.id ?? '',
-      imageURL: formValues.photo,
-      ...formValues,
-    } as Hero;
   }
 
   protected onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this._selectedFile = input.files[0];
-      const uploadedImageUrl = `http://localhost:3000/${this._selectedFile?.name}`;
-      this.form.patchValue({ photo: uploadedImageUrl });
+      this.selectedFile = `http://localhost:3000/${input.files[0].name}`; // FIXME: Adjust this URL with ENVS
     }
   }
 }
