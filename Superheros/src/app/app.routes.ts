@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
-import { TermsComponent } from './components/pages/terms/terms.component';
 import { MetaResolver } from './resolvers/meta-resolver';
 
 export const routes: Routes = [
@@ -20,7 +19,7 @@ export const routes: Routes = [
     }
   },
   { path: 'terms',
-    component: TermsComponent,
+    loadComponent: () => import('@components/pages/terms/terms.component').then(c => c.TermsComponent),
     title: 'Términos y Condiciones',
     data: {
       description: 'This is our Terms Page',

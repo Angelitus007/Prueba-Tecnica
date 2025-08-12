@@ -1,17 +1,20 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Hero } from '@models/hero';
 import { Observable } from 'rxjs';
-import { Hero } from '../models/hero';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroRequestsService {
-  // TODO: Debería guardarse la apiURL en los enviroments
-  private readonly apiURL = 'http://localhost:3000/superheros';
+  private readonly apiURL = `${environment.baseUrl}${environment.heroesEndpoint}`;
   private readonly http = inject(HttpClient);
 
-  public loadHeroes(page: number, filter?: string): Observable<HttpResponse<Hero[]>> {
+  public loadHeroes(
+    page: number,
+    filter?: string
+  ): Observable<HttpResponse<Hero[]>> {
     const endpoint = filter
       ? `${this.apiURL}?name_like=${filter}&_page=${page}&_limit=5`
       : `${this.apiURL}?_page=${page}&_limit=5`;
